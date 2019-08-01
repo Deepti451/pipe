@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>This is an object to maintain the assignment history for lead done through RRD.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>rrde__Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>RRD Assignments</relationshipLabel>
+        <relationshipName>RRD_Assignments</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rrde__Assignment_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Assignment Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Round Robin Algorithm</fullName>
+                    <default>false</default>
+                    <label>Round Robin Algorithm</label>
+                </value>
+                <value>
+                    <fullName>Email based assignment</fullName>
+                    <default>false</default>
+                    <label>Email based assignment</label>
+                </value>
+                <value>
+                    <fullName>Relationship based assignment</fullName>
+                    <default>false</default>
+                    <label>Relationship based assignment</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>rrde__Assignment_Type_new__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Assignment Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Round Robin Algorithm</fullName>
+                    <default>false</default>
+                    <label>Round Robin Algorithm</label>
+                </value>
+                <value>
+                    <fullName>Email based assignment</fullName>
+                    <default>false</default>
+                    <label>Email based assignment</label>
+                </value>
+                <value>
+                    <fullName>Relationship based assignment</fullName>
+                    <default>false</default>
+                    <label>Relationship based assignment</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>rrde__Created_Date_Time__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>CreatedDate</formula>
+        <label>Created Date Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>rrde__Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>RRD Assignments</relationshipLabel>
+        <relationshipName>RRD_Assignments</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rrde__Queue__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Queue</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__Released_Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>RRD Assignments</relationshipLabel>
+        <relationshipName>RRD_Assignments</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rrde__Released_Lead__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Released Lead</label>
+        <referenceTo>Lead</referenceTo>
+        <relationshipLabel>RRD Assignments</relationshipLabel>
+        <relationshipName>RRD_Assignments</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rrde__Round_Robin_User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Round Robin User</label>
+        <referenceTo>rrde__Round_Robin_Users__c</referenceTo>
+        <relationshipLabel>RRD Assignments</relationshipLabel>
+        <relationshipName>RRD_Assignments</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rrde__Salesforce_User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>User assigned based on email address is mapped to this field</description>
+        <externalId>false</externalId>
+        <label>Salesforce User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>RRD_Assignments</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rrde__User_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF( rrde__Salesforce_User__c != null,  rrde__Salesforce_User__r.FirstName +&apos; &apos;+ rrde__Salesforce_User__r.LastName , 
+
+IF( rrde__Round_Robin_User__r.rrde__Round_Robin_User_Name__r.FirstName != null, 
+(rrde__Round_Robin_User__r.rrde__Round_Robin_User_Name__r.FirstName + &apos; &apos;+rrde__Round_Robin_User__r.rrde__Round_Robin_User_Name__r.LastName),
+ 
+IF(rrde__Released_Lead__r.Owner:Queue.QueueName != null,
+rrde__Released_Lead__r.Owner:Queue.QueueName,
+
+IF( rrde__Released_Case__c !=null,
+ rrde__Released_Case__r.Owner:Queue.QueueName,
+null
+)
+)
+)
+)</formula>
+        <label>Owner Assigned</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>RRD Assignment</label>
+    <listViews>
+        <fullName>rrde__All</fullName>
+        <columns>rrde__Assignment_Type__c</columns>
+        <columns>rrde__Queue__c</columns>
+        <columns>rrde__Released_Lead__c</columns>
+        <columns>rrde__Round_Robin_User__c</columns>
+        <columns>rrde__Salesforce_User__c</columns>
+        <columns>OWNER.ALIAS</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>RRDA{0000}</displayFormat>
+        <label>RRD Assignments Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>RRD Assignments</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>rrde__User_Name__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>rrde__User_Name__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>rrde__User_Name__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>rrde__User_Name__c</searchFilterFields>
+        <searchResultsAdditionalFields>rrde__User_Name__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

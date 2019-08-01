@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Account --></label>
+        <name>rrde__Account__c</name>
+        <relationshipLabel><!-- RRD Assignments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Assignment Type --></label>
+        <name>rrde__Assignment_Type__c</name>
+        <picklistValues>
+            <masterLabel>Email based assignment</masterLabel>
+            <translation><!-- Email based assignment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Relationship based assignment</masterLabel>
+            <translation><!-- Relationship based assignment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Round Robin Algorithm</masterLabel>
+            <translation><!-- Round Robin Algorithm --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Assignment Type --></label>
+        <name>rrde__Assignment_Type_new__c</name>
+        <picklistValues>
+            <masterLabel>Email based assignment</masterLabel>
+            <translation><!-- Email based assignment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Relationship based assignment</masterLabel>
+            <translation><!-- Relationship based assignment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Round Robin Algorithm</masterLabel>
+            <translation><!-- Round Robin Algorithm --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Created Date Time --></label>
+        <name>rrde__Created_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>rrde__Opportunity__c</name>
+        <relationshipLabel><!-- RRD Assignments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Queue --></label>
+        <name>rrde__Queue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>rrde__Released_Case__c</name>
+        <relationshipLabel><!-- RRD Assignments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Released Lead --></label>
+        <name>rrde__Released_Lead__c</name>
+        <relationshipLabel><!-- RRD Assignments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Round Robin User --></label>
+        <name>rrde__Round_Robin_User__c</name>
+        <relationshipLabel><!-- RRD Assignments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Salesforce User --></label>
+        <name>rrde__Salesforce_User__c</name>
+        <relationshipLabel><!-- RRD Assignments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Owner Assigned --></label>
+        <name>rrde__User_Name__c</name>
+    </fields>
+</CustomObjectTranslation>

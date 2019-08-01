@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Error Cause --></label>
+        <name>rrde__Error_Cause__c</name>
+    </fields>
+    <fields>
+        <label><!-- Exception Line No. --></label>
+        <name>rrde__Exception_Line_No__c</name>
+    </fields>
+    <fields>
+        <label><!-- Message --></label>
+        <name>rrde__Message__c</name>
+    </fields>
+</CustomObjectTranslation>

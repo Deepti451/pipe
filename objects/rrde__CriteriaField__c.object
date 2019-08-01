@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>This obect has created to set the criteria for fields of  lead and case object.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>rrde__Field_Api_Name__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field holds the api value of selected field</description>
+        <externalId>false</externalId>
+        <label>Field Api Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__Field_Data_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field holds the Data type of selected object</description>
+        <externalId>false</externalId>
+        <label>Field Data Type</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__Field_Value__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field holds the value of selected field of sobject.</description>
+        <externalId>false</externalId>
+        <label>Field Value</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__Old_Criteria__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Old Criteria</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__Operator__c</fullName>
+        <defaultValue>&quot;equals&quot;</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Operator</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>equals</fullName>
+                    <default>true</default>
+                    <label>equals</label>
+                </value>
+                <value>
+                    <fullName>not equals</fullName>
+                    <default>false</default>
+                    <label>not equals</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>rrde__SelectedObject__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field is used to store the sobject name.</description>
+        <externalId>false</externalId>
+        <label>Selected Object</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__Selected_Field__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field is used to hold the value of selected sobject field.</description>
+        <externalId>false</externalId>
+        <label>Selected Field Label</label>
+        <length>255</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__TeamName__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>RRD Team</label>
+        <referenceTo>rrde__RRD_Teams__c</referenceTo>
+        <relationshipLabel>Criteria Fields</relationshipLabel>
+        <relationshipName>CriteriaFields</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Criteria Field</label>
+    <listViews>
+        <fullName>rrde__All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>C-{0000}</displayFormat>
+        <label>CriteriaFields Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Criteria Fields</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>rrde__Boolean_Value</fullName>
+        <active>true</active>
+        <description>This rule s used to validate boolean data type value.</description>
+        <errorConditionFormula>rrde__Field_Data_Type__c=&apos;BOOLEAN&apos; &amp;&amp;  rrde__Field_Value__c != &apos;TRUE&apos; &amp;&amp;
+rrde__Field_Value__c != &apos;FALSE&apos;</errorConditionFormula>
+        <errorMessage>Please enter True or False in field value.If you select checkbox type field.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>rrde__Read_Only_Field</fullName>
+        <active>false</active>
+        <description>This validation rule is to make fieldread only after save.</description>
+        <errorConditionFormula>OR(
+ISCHANGED( Name ),
+ISCHANGED(  rrde__Field_Value__c  ),
+ISCHANGED (  rrde__Selected_Field__c ),
+ISCHANGED (  rrde__SelectedObject__c ),
+ISCHANGED (  rrde__TeamName__c  ),
+ISCHANGED (  rrde__Field_Api_Name__c),
+ISCHANGED (  rrde__Field_Data_Type__c)
+)</errorConditionFormula>
+        <errorMessage>You cannot edit this record. if changes required please create new one.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>rrde__new_criteria_field</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add New Criteria Field</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!requireScript(&quot;/soap/ajax/30.0/connection.js&quot;)} 
+{!requireScript(&quot;/soap/ajax/30.0/apex.js&quot;)} 
+
+ 
+var checkLimit = sforce.apex.execute(&quot;rrde.CriteriaFieldController&quot;, &quot;checkLimit&quot;, {teamId:&apos;{!rrde__RRD_Teams__c.Id}&apos;});
+
+if(checkLimit == &apos;yes&apos;){
+window.location.replace(&apos;/apex/rrde__CriteriaPage?parentId={!rrde__RRD_Teams__c.Id}&apos;);
+}
+else  {
+   alert(&apos;You can only add 5 criteria for a team. Please edit/delete a criteria for a new requirement.&apos;);
+}</url>
+    </webLinks>
+</CustomObject>

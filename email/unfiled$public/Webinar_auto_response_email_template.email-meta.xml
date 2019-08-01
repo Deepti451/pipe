@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Auto response template for webinar</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Webinar auto response email template</name>
+    <style>none</style>
+    <subject>Thanks for registering for Webinar on Machine Learning | 09th July, 10 AM IST</subject>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

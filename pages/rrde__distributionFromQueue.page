@@ -1,0 +1,271 @@
+<!-- Created By :HariKrishna  -->
+<apex:page controller="rrde.distributionFromQueue" id="pgId"  standardStylesheets="false" docType="html-5.0"  sidebar="false">  
+   <apex:stylesheet value="{!URLFOR($Resource.rrde__CSS, 'css/custom.css')}"/>
+   <apex:stylesheet value="{!URLFOR($Resource.rrde__CSS, 'css/bootstrap.min.css')}"/>
+<style>
+/*************salesforce overwrite css start here************/
+    
+.innerWrapper .bPageBlock, body #bodyCell .bResource .secondaryPalette, body .secondaryPalette.bPageBlock, body .individualPalette .secondaryPalette.bPageBlock, body .bodyDiv .genericTable, body .genericPageBlockTable, body .bodyDiv .bSubBlock, body .bComponentBlock .bPageBlock, body .bMyDashboard .bPageBlock, body.rlHoverFrame .bPageBlock, body.subjectSelectionPopup div.choicesBox, body.lookupTab .secondaryPalette.bPageBlock, body.popupTab .secondaryPalette.bPageBlock, body.UserTagStatsPage .secondaryPalette.bPageBlock{
+    border-bottom: 0 solid #eaeaea;
+    border-left: 0 solid #eaeaea;
+    border-radius: 0;
+    border-right: 0 solid #eaeaea;
+    border-top: 0px;
+    background: none;
+    
+}
+.apexp .bPageBlock.apexDefaultPageBlock .pbBody .pbSubheader{
+    background: none;
+}
+    .bodyDiv {
+   min-width: 100%;
+    height: 580px;
+    }
+    
+.clear-bottom .btn, .btn-warning{
+    background: #449d44;
+    line-height: 1.33333;
+    padding: 10px 16px;
+    color: #fff;
+    font-family: open sans;
+    font-size: 22px;
+    font-weight: 400;
+    text-transform: uppercase;
+    border: none;
+}
+.clear-bottom1 .btn, .btn-success{
+    background: #449d44;
+    line-height: 1.33333;
+    padding: 10px 16px;
+    color: #fff;
+    font-family: open sans;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+    border: none;
+    min-width: 120px;
+}
+.clear-bottom .btn-warning:focus{
+    background: #449d44;
+    
+}
+.clear-bottom .btn-warning:hover{
+    background: #449d44;
+}
+.col-md-6 .accountTab .tertiaryPalette, .individualPalette .accountBlock .tertiaryPalette, .layoutEdit .individualPalette .accountBlock .tertiaryPalette{
+    background: none;
+     border: none;
+}
+.col-md-6 .pbSubheader{
+    margin-bottom: 0px;
+    margin-top: 0px;
+     border: none;
+}
+
+.download-link{
+    font-size: 16px; padding-right: 6px; color: rgb(51, 51, 51); font-weight: 600; text-align: right; width: 100%; display: inline-block;
+}
+body, html {
+  height:600px;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+     border: none;
+}
+   .greenBtn{
+     text-align: center;}
+    
+.greenBtn .btn {
+    background: #5cb85c !important;
+    color: #fff !important;
+    background-color: #5cb85c !important;
+    border-color: #4cae4c !important;
+    padding:10px 10px;
+    font-size: 16px;
+        width: 60%;
+   
+}
+.leftpane {
+    width: 25%;
+    height: 100%;
+    float: left;
+   
+    border-collapse: collapse;
+}
+
+.middlepane {
+    width: 50%;
+    height: 100%;
+    float: left;
+  
+    border-collapse: collapse;
+}
+
+.rightpane {
+  width: 25%;
+  height: 100%;
+  position: relative;
+  float: right;
+
+  border-collapse: collapse;
+    }
+    
+    .toppane {
+  width: 100%;
+  height: 100px;
+  border-collapse: collapse;
+  
+}
+    .manageSpaceDist table{     height: 139px;}
+    .manageSpaceDist table tbody tr{    display: grid;}
+    .manageSpaceDist table tbody tr td{width: 100% !important;    border-color: #e9e9e9 !important;}
+    .manageSpaceDist table tbody tr th{width: 100% !important;text-align: center !important;    padding-right: 0 !important;    border-color: #e9e9e9 !important;}
+    .manageSpaceDist table tbody tr th label{text-align: center;}
+    .manageSpaceDist table tbody tr td:last-child{    text-align: center !important;;
+    font-size: 25px;
+    font-weight: bolder;}
+   .row{
+       padding-top: 12px;
+        padding-bottom: 25px;
+    border:none;
+    }
+   .btnDisabled {
+   
+    padding: 10px 10px;
+    font-size: 16px;
+    }
+    
+    .bodernone{
+    border:none;
+    }
+    .apexp .bPageBlock .detailList {
+    width: 100%;
+    border: none !important;
+}
+    .bPageBlock .detailList tr td, .bPageBlock .detailList tr th, .hoverDetail .bPageBlock .detailList tr td, .hoverDetail .bPageBlock .detailList tr th {
+    border-bottom: none !important;
+}
+    
+    
+ 
+/*************salesforce overwrite css end here************/
+</style>
+    
+    
+     
+<apex:pageMessage summary="Your RRD licence has expired, Please contact us sales@mirketa.com to renew your license." rendered="{!expired}" severity="info" strength="3" />
+        <apex:pageMessages />
+      
+    <apex:form id="theForm" rendered="{!!expired}">
+      <div class="container">
+          <div class="row">
+             <div class="col-md-12">
+                                <span class="download-link">Click Here : <apex:outputLink value="{!URLFOR($Resource.rrde__DistributionFromQueue)}" style="color: #1797c0; border-bottom: solid 1px #1797c0; text-decoration: none;" target="_blank">Distribution From Queue Tutorial Document</apex:outputLink></span>
+
+             </div>
+         </div>
+          <div class="row">
+         <div class="col-md-4 ">
+     <apex:pageBlock id="LeadpgBlckId">
+          
+         <div class="row custom-col ">
+                <div style="text-align: center;">Lead Distribution From Queue</div>
+          </div>      
+        
+         <div class="row custom-col-grey manageSpaceDist">
+            <apex:pageBlockSection columns="1"> 
+                <div class="col-md-12 ">  
+                    
+                   
+                     <apex:outputText value="{!Lcount}" label="Leads in Round Robin Queue:" style="font-size: 32px;"/>  
+                </div>                                                                                                                          
+            </apex:pageBlockSection>
+            
+<div class="greenBtn">
+           <apex:commandButton action="{!DistributeLead}" value="Distribute Leads" status="actStatusLeadId" styleClass="btn btn-default" disabled="{!(Lcount == 0) || (showleadconfirm == true) }" />  
+               <apex:actionStatus id="actStatusLeadId" >
+                    <apex:facet name="start" >
+                       <apex:image value="/img/loading.gif" title="Processing..." />                                
+                    </apex:facet>                    
+                </apex:actionStatus>                  
+             </div>       
+         </div>  
+            
+     </apex:pageBlock>
+          </div>
+          
+          <div class="col-md-4">
+     <apex:pageBlock id="casepgBlckId" > 
+         <div class="row custom-col ">
+             <div style="text-align: center;">Case Distribution From Queue</div>
+          </div>   
+          
+            <div class="row custom-col-grey manageSpaceDist">   
+                <apex:pageBlockSection columns="1">
+                     <div class="col-md-12">  
+                       
+                          <apex:outputText label="Cases in Round Robin Queue:" value="{!Ccount}" style="font-size: 32px;"/>   
+                     </div>                                    
+                </apex:pageBlockSection>  
+           
+         <div class="greenBtn">
+        
+           <apex:commandButton action="{!DistributeCase}" value="Distribute Cases" styleClass="btn btn-default" status="actStatusCaseId" disabled="{!(ccount == 0) || (showcaseconfirm == true)}"/>    
+             <apex:actionStatus id="actStatusCaseId" >
+                    <apex:facet name="start" >
+                       <apex:image value="/img/loading.gif" title="Processing..." />                                
+                    </apex:facet>                    
+                </apex:actionStatus>      
+       
+         </div>
+         </div>
+     </apex:pageBlock>  
+          </div>
+              
+              
+          <div class="col-md-4">
+        <!--- added by vernika --->
+        <apex:pageBlock id="accpgBlckId" > 
+         <div class="row custom-col">
+             <div style="text-align: center;">Account Distribution From Default Owner</div>
+          </div>   
+          
+            <div class="row custom-col-grey manageSpaceDist">   
+                <apex:pageBlockSection columns="1">
+                     <div class="col-md-12">  
+                       
+                          <apex:outputText label="Accounts with default owner:" value="{!accCount}" style="font-size: 32px;" />   
+                     </div>                                    
+                </apex:pageBlockSection>  
+          
+    
+         
+            
+               <div class="greenBtn">
+           <apex:commandButton action="{!DistributeAccount}" value="Distribute Accounts" styleClass="btn btn-default" status="actStatusCaseId" disabled="{!(accCount == 0) || (showaccountconfirm == true)}" />    
+             <apex:actionStatus id="actStatusCaseId" >
+                    <apex:facet name="start" >
+                       <apex:image value="/img/loading.gif" title="Processing..." />                                
+                    </apex:facet>                    
+                </apex:actionStatus>      
+            </div>
+             </div>
+     </apex:pageBlock>  
+
+              </div> 
+        </div>
+          <div class="row">
+              <apex:pageMessage severity="confirm"  summary="Distribution of Lead(s) from queue has been initialized, you can refresh the page
+                                                                    after sometime to see the changes in record count." rendered="{!showleadconfirm}"   strength="3" />
+ <apex:pageMessage severity="confirm"  summary="Distribution of Case(s) from queue has been initialized, you can refresh the page
+                                                                    after sometime to see the changes in record count." rendered="{!showcaseconfirm}"   strength="3" />
+ <apex:pageMessage severity="confirm"  summary="Distribution of Account(s) from Default Owner has been initialized, you can refresh the page
+                                                                    after sometime to see the changes in record count." rendered="{!showaccountconfirm}"   strength="3" />
+
+          </div>
+           
+        </div>   </apex:form>  
+     
+</apex:page>

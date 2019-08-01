@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Auto response to Advitya User while the lightning version of Advitya is Under Development.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Auto response to Advitya User - Under Development</name>
+    <style>none</style>
+    <subject>Thanks for downloading Advitya - Help is just a phone call away</subject>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

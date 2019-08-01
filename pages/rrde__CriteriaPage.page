@@ -1,0 +1,51 @@
+<apex:page standardController="rrde__CriteriaField__c" extensions="rrde.CriteriaFieldController" standardStylesheets="false">
+<apex:form id="frm">
+<script>
+window.onload = start;
+
+function start(){
+        document.getElementById(('{!$Component.frm.pb.pbs.inField}')).style.borderLeft = "4px solid #cc0000";
+        }
+</script>
+<html>
+<br/><p></p><br/>
+<p style="font-size:1.5em;margin-top:-1%;">Criteria for Assignment</p>
+</html>
+ <apex:pageBlock id="pb">
+ <apex:messages style="color:#cc0000" rendered="{!showErr}"/>
+  <apex:pageBlockSection id="pbs">
+    
+    <apex:outputLabel value="Selected Object :" style="width:10%;colspan:1"></apex:outputLabel>
+    <apex:outputText value="{!selectedObject}" style="width:10%"></apex:outputText>
+      
+    <apex:outputLabel value="Select Field :" style="width:10%;colspan:1"></apex:outputLabel>
+    <apex:selectList value="{!selectedField}" size="1" >
+      <apex:selectOptions value="{!fieldlist}"/>
+    </apex:selectList>
+
+      <!-----------------RRD-252 Start------------------------->
+      <apex:outputLabel value="Select Operator :" style="width:10%;colspan:1"></apex:outputLabel>
+      <apex:selectList value="{!selectedOperator}" size="1" multiselect="false">
+          <apex:selectOptions value="{!logicalOperatorList}"></apex:selectOptions>
+      </apex:selectList>
+      <!--apex:inputField value="{!CriteriaField__c.Operator__c}" id="selectedOperator" label=""/-->
+      <!-----------------RRD-252 End------------------------->
+      
+    <apex:outputLabel value="Enter Field Value :" style="width:10%;colspan:1"></apex:outputLabel>
+    <apex:inputText value="{!Fieldvalue}" id="inField" />   
+    <div display="none" style="width:100%">
+        <apex:outputText value="{!errorMessage}" style="color:#cc0000"></apex:outputText>
+    </div>
+    <apex:outputText value="" rendered="{!oldPresent}"/>
+    <apex:outputLabel value="Old Criteria :" rendered="{!oldPresent}" style="width:10%;colspan:1"></apex:outputLabel>
+    <apex:outputText value="{!oldCriteria}" rendered="{!oldPresent}" style="width:10%"/>
+    
+    </apex:pageBlockSection>
+    <apex:pageBlockButtons >
+    <apex:commandButton value="Save" action="{!SaveCriteria}" />
+    <apex:commandButton value="Save and New" action="{!SaveAndNew}" />
+    <apex:commandButton value="Cancel" action="{!CancelCriteria}" />
+   </apex:pageBlockButtons>
+ </apex:pageBlock>
+</apex:form>
+</apex:page>

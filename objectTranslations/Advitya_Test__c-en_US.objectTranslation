@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Advitya Test</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Advitya Tests</value>
+    </caseValues>
+    <fields>
+        <label><!-- Company --></label>
+        <name>Company__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contacts__c</name>
+        <relationshipLabel><!-- Advitya Tests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Date --></label>
+        <name>Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email --></label>
+        <name>Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field25 --></label>
+        <name>Field25__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field27 --></label>
+        <name>Field27__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field28 --></label>
+        <name>Field28__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field31 --></label>
+        <name>Field31__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field32 --></label>
+        <name>Field32__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field34 --></label>
+        <name>Field34__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field35 --></label>
+        <name>Field35__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field37 --></label>
+        <name>Field37__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field39 --></label>
+        <name>Field39__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field42 --></label>
+        <name>Field42__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field43 --></label>
+        <name>Field43__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field44 --></label>
+        <name>Field44__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field46 --></label>
+        <name>Field46__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field47 --></label>
+        <name>Field47__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field48 --></label>
+        <name>Field48__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field49 --></label>
+        <name>Field49__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field50 --></label>
+        <name>Field50__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field53 --></label>
+        <name>Field53__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field54 --></label>
+        <name>Field54__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field55 --></label>
+        <name>Field55__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field58 --></label>
+        <name>Field58__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field59 --></label>
+        <name>Field59__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field60 --></label>
+        <name>Field60__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field61 --></label>
+        <name>Field61__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field62 --></label>
+        <name>Field62__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field63 --></label>
+        <name>Field63__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field64 --></label>
+        <name>Field64__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field65 --></label>
+        <name>Field65__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field66 --></label>
+        <name>Field66__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field67 --></label>
+        <name>Field67__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field69 --></label>
+        <name>Field69__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field71 --></label>
+        <name>Field71__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field72 --></label>
+        <name>Field72__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field73 --></label>
+        <name>Field73__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field74 --></label>
+        <name>Field74__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field75 --></label>
+        <name>Field75__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field76 --></label>
+        <name>Field76__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field77 --></label>
+        <name>Field77__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field78 --></label>
+        <name>Field78__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field79 --></label>
+        <name>Field79__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field80 --></label>
+        <name>Field80__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field81 --></label>
+        <name>Field81__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field82 --></label>
+        <name>Field82__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field83 --></label>
+        <name>Field83__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field84 --></label>
+        <name>Field84__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field85 --></label>
+        <name>Field85__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field86 --></label>
+        <name>Field86__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field87 --></label>
+        <name>Field87__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field88 --></label>
+        <name>Field88__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field89 --></label>
+        <name>Field89__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field91 --></label>
+        <name>Field91__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field92 --></label>
+        <name>Field92__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field93 --></label>
+        <name>Field93__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field94 --></label>
+        <name>Field94__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field96 --></label>
+        <name>Field96__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field97 --></label>
+        <name>Field97__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Currency --></label>
+        <name>Field_Currency__c</name>
+    </fields>
+    <fields>
+        <label><!-- Filed Number --></label>
+        <name>Filed_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gopal --></label>
+        <name>Gopal_del__c</name>
+    </fields>
+    <fields>
+        <label><!-- Money --></label>
+        <name>Money__c</name>
+    </fields>
+    <fields>
+        <label><!-- Phone 1 --></label>
+        <name>Phone_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Phone --></label>
+        <name>Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Picklist --></label>
+        <name>Picklist__c</name>
+        <picklistValues>
+            <masterLabel>One</masterLabel>
+            <translation><!-- One --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three</masterLabel>
+            <translation><!-- Three --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Two</masterLabel>
+            <translation><!-- Two --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Salary --></label>
+        <name>Salary__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subham --></label>
+        <name>Subham__c</name>
+    </fields>
+    <fields>
+        <label><!-- Syed --></label>
+        <name>Syed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Temp --></label>
+        <name>Temp__c</name>
+    </fields>
+    <fields>
+        <label><!-- Text Area --></label>
+        <name>Text_Area__c</name>
+    </fields>
+    <fields>
+        <label><!-- Text Long --></label>
+        <name>Text_Long__c</name>
+    </fields>
+    <fields>
+        <label><!-- check box --></label>
+        <name>check_box__c</name>
+    </fields>
+    <fields>
+        <label><!-- date time --></label>
+        <name>date_time__c</name>
+    </fields>
+    <fields>
+        <label><!-- field10 --></label>
+        <name>field10__c</name>
+    </fields>
+    <fields>
+        <label><!-- field11 --></label>
+        <name>field11__c</name>
+    </fields>
+    <fields>
+        <label><!-- field12 --></label>
+        <name>field12__c</name>
+    </fields>
+    <fields>
+        <label><!-- field13 --></label>
+        <name>field13__c</name>
+    </fields>
+    <fields>
+        <label><!-- field14 --></label>
+        <name>field14__c</name>
+    </fields>
+    <fields>
+        <label><!-- field16 --></label>
+        <name>field16__c</name>
+    </fields>
+    <fields>
+        <label><!-- field18 --></label>
+        <name>field18__c</name>
+    </fields>
+    <fields>
+        <label><!-- field19 --></label>
+        <name>field19__c</name>
+    </fields>
+    <fields>
+        <label><!-- field20 --></label>
+        <name>field20__c</name>
+    </fields>
+    <fields>
+        <label><!-- field57 --></label>
+        <name>field57__c</name>
+    </fields>
+    <fields>
+        <label><!-- field6 --></label>
+        <name>field6__c</name>
+    </fields>
+    <fields>
+        <label><!-- field70 --></label>
+        <name>field70__c</name>
+    </fields>
+    <fields>
+        <label><!-- field7 --></label>
+        <name>field7__c</name>
+    </fields>
+    <fields>
+        <label><!-- field9 --></label>
+        <name>field9__c</name>
+    </fields>
+    <fields>
+        <label><!-- formula1 --></label>
+        <name>formula1__c</name>
+    </fields>
+    <fields>
+        <label><!-- geolocation --></label>
+        <name>geolocation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Advitya_Test 2 --></label>
+        <name>lookup2__c</name>
+        <relationshipLabel><!-- Advitya Tests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- multipicklilst --></label>
+        <name>multipicklilst__c</name>
+        <picklistValues>
+            <masterLabel>Five</masterLabel>
+            <translation><!-- Five --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Four</masterLabel>
+            <translation><!-- Four --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>One</masterLabel>
+            <translation><!-- One --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Three</masterLabel>
+            <translation><!-- Three --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Two</masterLabel>
+            <translation><!-- Two --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- percent --></label>
+        <name>percent__c</name>
+    </fields>
+    <fields>
+        <label><!-- text encrypt --></label>
+        <name>text_encrypt__c</name>
+    </fields>
+    <fields>
+        <label><!-- time --></label>
+        <name>time__c</name>
+    </fields>
+    <fields>
+        <label><!-- url --></label>
+        <name>url__c</name>
+    </fields>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

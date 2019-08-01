@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Open</fullName>
+        <default>true</default>
+        <label>Open</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Contacted</fullName>
+        <default>false</default>
+        <label>Contacted</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Connected on LinkedIn</fullName>
+        <default>false</default>
+        <label>Connected on LinkedIn</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Get email and Phone Number</fullName>
+        <default>false</default>
+        <label>Get email and Phone Number</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Send email with case studies</fullName>
+        <default>false</default>
+        <label>Send email with case studies</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Follow up 1</fullName>
+        <default>false</default>
+        <label>Follow-up</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Set up intro call with team</fullName>
+        <default>false</default>
+        <label>Set up intro call with team</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Demo Scheduled</fullName>
+        <default>false</default>
+        <label>Demo Scheduled</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Follow up email- Next Steps</fullName>
+        <default>false</default>
+        <label>Follow up email- Next Steps</label>
+        <converted>false</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Qualified</fullName>
+        <default>false</default>
+        <label>Qualified</label>
+        <converted>true</converted>
+    </standardValue>
+    <standardValue>
+        <fullName>Unqualified</fullName>
+        <default>false</default>
+        <label>Unqualified</label>
+        <converted>false</converted>
+    </standardValue>
+</StandardValueSet>

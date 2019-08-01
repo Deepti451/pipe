@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- End date of current monthly cycle --></help>
+        <label><!-- Current Monthly Cycle End date --></label>
+        <name>rrde__Current_Monthly_Cycle_End_date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Start date of current monthly cycle --></help>
+        <label><!-- Current Monthly Cycle Start date --></label>
+        <name>rrde__Current_Monthly_Cycle_Start_date__c</name>
+    </fields>
+    <fields>
+        <help><!-- End date of the weekly cycle. --></help>
+        <label><!-- Current Weekly Cycle End date --></label>
+        <name>rrde__Current_Weekly_Cycle_End_date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Start date of current cycle --></help>
+        <label><!-- Current Weekly Cycle Start date --></label>
+        <name>rrde__Current_Weekly_Cycle_Start_date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Daily Distribution Date --></help>
+        <label><!-- Daily Distribution Start Date --></label>
+        <name>rrde__Daily_Distribution_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Daily Distribution End Date --></help>
+        <label><!-- Daily Distribution End Date --></label>
+        <name>rrde__Daily_Distribution_End_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check if Assignment is Daily --></help>
+        <label><!-- Daily Assignment --></label>
+        <name>rrde__Daily_Distribution__c</name>
+    </fields>
+    <fields>
+        <label><!-- Default Owner ID --></label>
+        <name>rrde__Default_Owner_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distribute Daily --></label>
+        <name>rrde__Distribute_Daily__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distribute Hourly --></label>
+        <name>rrde__Distribute_Hourly__c</name>
+    </fields>
+    <fields>
+        <help><!-- Dont show welcome page --></help>
+        <label><!-- Dont show welcome page --></label>
+        <name>rrde__Dont_show_welcome_page__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Round Robin for All Users --></label>
+        <name>rrde__Enable_Round_Robin_Account_All_Users__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Round Robin for online Users --></label>
+        <name>rrde__Enable_Round_Robin_Account_online_Users__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Round Robin for All Users --></label>
+        <name>rrde__Enable_Round_Robin_Opportunity_All_Users__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Round Robin for online Users --></label>
+        <name>rrde__Enable_Round_Robin_Oppty_online_Users__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this box if you want to run Round Robin for Case Assignment only for online users. --></help>
+        <label><!-- Enable Round Robin for Online Users --></label>
+        <name>rrde__Enable_Round_Robin_for_Case_Online_Users__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this box if you want to run Round Robin lead Assignment only for online Round Robin users. --></help>
+        <label><!-- Enable Round Robin for online Users --></label>
+        <name>rrde__Enable_Round_Robin_for_Lead_Online_Users__c</name>
+    </fields>
+    <fields>
+        <help><!-- Leads with the same value in the field selected below as an existing lead is assigned to the owner of the existing lead. Choose the field you want for the relationship to be based from the list below. --></help>
+        <label><!-- Enable relationship based assignment --></label>
+        <name>rrde__Enable_assignment_to_previous_owner_c__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this box if you want to run Round Robin Case Assignment for all Round Robin users. --></help>
+        <label><!-- Enable Round Robin for all Users --></label>
+        <name>rrde__Enable_for_All_Case_Round_Robin_Users__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this box if you want to run Round Robin lead Assignment for all Round Robin users. --></help>
+        <label><!-- Enable Round Robin for All Users --></label>
+        <name>rrde__Enable_for_All_Lead_Round_Robin_Users__c</name>
+    </fields>
+    <fields>
+        <help><!-- Cases with the same value in the field selected below as an existing case is assigned to the owner of the existing lead. Choose the field you want for the relationship to be based from the list below. --></help>
+        <label><!-- Enable relationship based assignment --></label>
+        <name>rrde__Enable_relationship_based_assignment_c__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable relationship based assignment --></label>
+        <name>rrde__Enable_relationship_based_assignment_opp__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check if Assignment is Hourly --></help>
+        <label><!-- Hourly Assignment --></label>
+        <name>rrde__Hourly_Assignment__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hourly Distribution End Time --></label>
+        <name>rrde__Hourly_Distribution_End_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hourly Distribution Start Time --></label>
+        <name>rrde__Hourly_Distribution_Start_Time__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check if the Assignment is Monthly --></help>
+        <label><!-- Monthly Assignment --></label>
+        <name>rrde__Monthly_Distribution__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notify Account Owner via Email --></label>
+        <name>rrde__Notify_Account_Owner_via_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notify Account Owner via Task --></label>
+        <name>rrde__Notify_Account_Owner_via_Task__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notify Opportunity Owner via Email --></label>
+        <name>rrde__Notify_Opportunity_Owner_via_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notify Opportunity Owner via Task --></label>
+        <name>rrde__Notify_Opportunity_Owner_via_Task__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this box if you want to notify the Case owner Via Email --></help>
+        <label><!-- Notify Case Owner via Email --></label>
+        <name>rrde__Notify_by_Email_to_Case_Owner__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this box if you want to notify the Lead owner Via Email --></help>
+        <label><!-- Notify Lead Owner via Email --></label>
+        <name>rrde__Notify_by_Email_to_Lead_Owner__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this box if you want to notify the Case owner Via Task --></help>
+        <label><!-- Notify Case Owner via Task --></label>
+        <name>rrde__Notify_by_Task_to_Case_Owner__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check this box if you want to notify the Lead owner Via Task --></help>
+        <label><!-- Notify Lead Owner via Task --></label>
+        <name>rrde__Notify_by_Task_to_Lead_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Relationship for Case --></label>
+        <name>rrde__Relationship_for_Case__c</name>
+    </fields>
+    <fields>
+        <label><!-- Relationship for Lead --></label>
+        <name>rrde__Relationship_for_Lead__c</name>
+    </fields>
+    <fields>
+        <label><!-- Relationship for Opportunity --></label>
+        <name>rrde__Relationship_for_Opportunity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Skip Weekends --></label>
+        <name>rrde__Skip_Weekends__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check if the  Assignment is weekly --></help>
+        <label><!-- Weekly Assignment --></label>
+        <name>rrde__Weekly_Distribution__c</name>
+    </fields>
+</CustomObjectTranslation>

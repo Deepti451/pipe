@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>update the number of open cases in RRD User</description>
+    <label>Update Open Cases number</label>
+    <processType>Workflow</processType>
+</Flow>

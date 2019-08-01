@@ -1,0 +1,34 @@
+<apex:page standardController="rrde__CriteriaField__c" extensions="rrde.CriteriaFieldController" standardStylesheets="false">
+<apex:form id="frm">
+
+<html>
+<br/><p></p><br/>
+<p style="font-size:1.5em;margin-top:-1%;">Criteria for Assignment</p>
+</html>
+ <apex:pageBlock id="pb">
+ <apex:messages style="color:#cc0000" rendered="{!showErr}"/>
+  <apex:pageBlockSection id="pbs">
+    
+    <apex:outputLabel value="Selected Object :" ></apex:outputLabel>
+    <apex:outputText value="{!selectedObject}"></apex:outputText>
+    
+    <apex:outputLabel value="Selected Field :"></apex:outputLabel>
+    <apex:outputText value="{!selectedField}"/>
+    
+    <apex:outputLabel value="Field Value :"></apex:outputLabel>
+    <apex:outputText value="{!Fieldvalue}" />
+    
+    <apex:outputLabel value="Old Criteria :" rendered="{!oldPresent}"></apex:outputLabel>
+    <apex:outputText value="{!oldCriteria}" rendered="{!oldPresent}"/>
+    
+    <div display="none" >
+        <apex:outputText value="{!errorMessage}" style="color:#cc0000"></apex:outputText>
+    </div>
+    </apex:pageBlockSection>
+    <apex:pageBlockButtons >
+    <apex:commandButton value="Edit" action="{!editCriteria}" />
+    <apex:commandButton value="Cancel" action="{!CancelCriteria}" />
+   </apex:pageBlockButtons>
+ </apex:pageBlock>
+</apex:form>
+</apex:page>

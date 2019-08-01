@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Field Api Name --></label>
+        <name>rrde__Field_Api_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Data Type --></label>
+        <name>rrde__Field_Data_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Field Value --></label>
+        <name>rrde__Field_Value__c</name>
+    </fields>
+    <fields>
+        <label><!-- Old Criteria --></label>
+        <name>rrde__Old_Criteria__c</name>
+    </fields>
+    <fields>
+        <label><!-- Operator --></label>
+        <name>rrde__Operator__c</name>
+        <picklistValues>
+            <masterLabel>equals</masterLabel>
+            <translation><!-- equals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>not equals</masterLabel>
+            <translation><!-- not equals --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Selected Object --></label>
+        <name>rrde__SelectedObject__c</name>
+    </fields>
+    <fields>
+        <label><!-- Selected Field Label --></label>
+        <name>rrde__Selected_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- RRD Team --></label>
+        <name>rrde__TeamName__c</name>
+        <relationshipLabel><!-- Criteria Fields --></relationshipLabel>
+    </fields>
+    <validationRules>
+        <errorMessage><!-- Please enter True or False in field value.If you select checkbox type field. --></errorMessage>
+        <name>rrde__Boolean_Value</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot edit this record. if changes required please create new one. --></errorMessage>
+        <name>rrde__Read_Only_Field</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- new_criteria_field --></label>
+        <name>rrde__new_criteria_field</name>
+    </webLinks>
+</CustomObjectTranslation>

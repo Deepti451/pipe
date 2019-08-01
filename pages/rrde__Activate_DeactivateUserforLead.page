@@ -1,0 +1,30 @@
+<apex:page standardcontroller="Lead" extensions="rrde.Activate_Deactivate_User" >
+     <apex:form >
+        <apex:actionFunction action="{!deactivateUserFromLead}" name="deactivateUserFromLead" oncomplete="showalert();"/>
+        <apex:actionFunction action="{!redirectToPrevPage}" name="redirectToPrevPage"/>
+    
+         <script>
+            var url=window.location.href;
+            window.onload=function(){
+                
+                deactivateUserFromLead();
+            }
+            function showalert(){
+                //alert("Operation: "+{!operation});
+                var opt="{!operation}";
+                var recordId = "{!recId}";
+                if(opt=="activate"){
+                    alert("User activated successfully!");    
+                }else if(opt=="deactivate"){
+                    alert("User de-activated successfully!");   
+                }else if(opt=="none"){
+                    alert("No users found!");    
+                }
+                redirectToPrevPage();
+                //window.open("/"+ recordId,'_self');
+                //location.reload();
+                
+            }
+        </script>
+    </apex:form>
+</apex:page>

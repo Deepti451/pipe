@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- Store the max probability of the opportunity. --></help>
+        <label><!-- Max Probability --></label>
+        <name>delphiDemo__Max_Probability__c</name>
+    </fields>
+    <fields>
+        <help><!-- Store the min probability of the opportunity. --></help>
+        <label><!-- Min Probability --></label>
+        <name>delphiDemo__Min_Probability__c</name>
+    </fields>
+    <fields>
+        <label><!-- Probability Mean --></label>
+        <name>delphiDemo__Probability_Mean__c</name>
+    </fields>
+    <fields>
+        <label><!-- Probability SD --></label>
+        <name>delphiDemo__Probability_SD__c</name>
+    </fields>
+</CustomObjectTranslation>

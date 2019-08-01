@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Batch Date/Time --></label>
+        <name>delphiDemo__Batch_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Counter --></label>
+        <name>delphiDemo__Counter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage Name --></label>
+        <name>delphiDemo__Stage_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Time Duration --></label>
+        <name>delphiDemo__Time_Duration__c</name>
+    </fields>
+    <fields>
+        <label><!-- timePeriodFlow --></label>
+        <name>delphiDemo__timePeriodFlow__c</name>
+    </fields>
+</CustomObjectTranslation>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- There will be no limit to the number of open cases at any point of time is case no value for this field has been specified --></help>
+        <label><!-- Allowed Number of Open Cases --></label>
+        <name>rrde__Allowed_Number_of_Open_Cases__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned records current cycle. --></label>
+        <name>rrde__Assigned_records_current_cycle__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned records current cycle --></label>
+        <name>rrde__Assigned_records_current_cycle_front__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Criteria --></label>
+        <name>rrde__Case_Criteria__c</name>
+    </fields>
+    <fields>
+        <label><!-- Complete Target --></label>
+        <name>rrde__Complete_Target__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>rrde__Is_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Ready to Assign? --></label>
+        <name>rrde__Is_Ready_to_Assign__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Team Active? --></label>
+        <name>rrde__Is_Team_Active__c</name>
+    </fields>
+    <fields>
+        <help><!-- Track when was last datetime when case was assigned to this user, Set it first time current time, when you are creating this first time. --></help>
+        <label><!-- Last Case Assigned Date time --></label>
+        <name>rrde__Last_Case_Assigned_Date_time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last account assigned Date Time --></label>
+        <name>rrde__Last_account_assigned_Date_Time__c</name>
+    </fields>
+    <fields>
+        <help><!-- Track when was last datetime when lead was assigned to this user, Set it first time current time, when you are creating this first time. --></help>
+        <label><!-- Last lead assigned Date Time --></label>
+        <name>rrde__Last_lead_assigned_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last opp assigned date time --></label>
+        <name>rrde__Last_opp_assigned_date_time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Criteria --></label>
+        <name>rrde__Lead_Criteria__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Assignment Date/Time --></label>
+        <name>rrde__Previous_Assignment_Date_TimeView__c</name>
+    </fields>
+    <fields>
+        <help><!-- Track the old assignment Date time of user. --></help>
+        <label><!-- Previous Assignment Datetime --></label>
+        <name>rrde__Previous_Assignment_Datetime__c</name>
+    </fields>
+    <fields>
+        <label><!-- Queue Id --></label>
+        <name>rrde__Queue_Id__c</name>
+    </fields>
+    <fields>
+        <help><!-- This value defines the maximum number of records a user can be assigned which is set to unlimited when left blank --></help>
+        <label><!-- Record assign limit --></label>
+        <name>rrde__Record_assign_limit__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select the User from Lookup to add in Round Robin User List --></help>
+        <label><!-- Round Robin User Name --></label>
+        <name>rrde__Round_Robin_User_Name__c</name>
+        <relationshipLabel><!-- Round Robin Users --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- RRD User Name --></label>
+        <name>rrde__Round_Robin_User_Name_text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Team --></label>
+        <name>rrde__Team__c</name>
+        <relationshipLabel><!-- Round Robin Users --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Team&apos;s Record Type --></label>
+        <name>rrde__Team_s_Record_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- To be assigned records --></label>
+        <name>rrde__To_be_assigned_records__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Open Cases --></label>
+        <name>rrde__Total_Assigned_Cases__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Assigned Cases - Open --></label>
+        <name>rrde__Total_Assigned_Cases_f__c</name>
+    </fields>
+    <fields>
+        <label><!-- isNotRestricted --></label>
+        <name>rrde__isNotRestricted__c</name>
+    </fields>
+    <validationRules>
+        <errorMessage><!-- Record assign limit should be greater than 0 and the number of assigned records in current cycle on Round Robin User. --></errorMessage>
+        <name>rrde__Record_assign_limit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select Round Robin User --></errorMessage>
+        <name>rrde__User_Name_Required</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Add_Queue --></label>
+        <name>rrde__Add_Queue</name>
+    </webLinks>
+</CustomObjectTranslation>

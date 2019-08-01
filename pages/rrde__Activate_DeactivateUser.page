@@ -1,0 +1,37 @@
+<apex:page controller="rrde.Activate_Deactivate_User_Home" >
+<apex:form >
+    <apex:actionFunction action="{!deactivateUserFromLead}" name="deactivateUserFromLead" oncomplete="showalert();"/>
+    <apex:actionFunction action="{!redirectToPrevPage}" name="redirectToPrevPage"/>
+    <script>
+    
+    window.onload=function(){
+        var opt="{!operation}";;
+        var recordId = "{!userid}";
+        if(opt=="none"){
+            alert("No users found!");
+            redirectToPrevPage(recordId);
+        }
+        else{
+            deactivateUserFromLead();
+        }
+    }
+    
+    //Function to show alert if the user is an RRD User
+    function showalert(){
+        
+        var opt="{!operation}";
+        var recordId = "{!userid}";
+        var url = "{!baseUrl}";
+        
+        if(opt=="activate"){
+            alert("User activated successfully!");    
+        }else if(opt=="deactivate"){
+            alert("User de-activated successfully!");   
+        }
+        
+        redirectToPrevPage();
+    }
+    
+    </script>
+</apex:form>
+</apex:page>

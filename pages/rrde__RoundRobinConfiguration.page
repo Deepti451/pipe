@@ -1,0 +1,884 @@
+<apex:page controller="rrde.RRConfiguration"   standardStylesheets="false" docType="html-5.0"  sidebar="false" action="{!startScheduler}">
+   <apex:stylesheet value="{!URLFOR($Resource.rrde__CSS, 'css/custom.css')}"/>
+   <apex:stylesheet value="{!URLFOR($Resource.rrde__CSS, 'css/bootstrap.min.css')}"/>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+   <style>
+   body{
+   font-size:1.2em;
+   }
+.popupBackground {
+    background-color: black;
+    opacity: 0.20;
+    filter: alpha(opacity=20);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 998;
+    position: absolute;
+    cursor: wait;
+}
+
+.PopupPanel {
+    left: 50%;
+    margin-left: -30px;
+    top: 50%;
+    margin-top: 50px;
+    z-index: 999;
+    position: fixed;
+    cursor: pointer;
+}
+.outputlableclass{
+    font-size: 91%;
+    font-weight: bold;
+    color:#4a4a56;
+}
+.tableclassforoutputlabel{
+    text-align: right;
+    width: 200px;
+}
+.tableclassforoutputlabe2{
+    width: 10px;
+} 
+
+
+/*************salesforce overwrite css start here************/
+.innerWrapper .bPageBlock, body #bodyCell .bResource .secondaryPalette, body .secondaryPalette.bPageBlock, body .individualPalette .secondaryPalette.bPageBlock, body .bodyDiv .genericTable, body .genericPageBlockTable, body .bodyDiv .bSubBlock, body .bComponentBlock .bPageBlock, body .bMyDashboard .bPageBlock, body.rlHoverFrame .bPageBlock, body.subjectSelectionPopup div.choicesBox, body.lookupTab .secondaryPalette.bPageBlock, body.popupTab .secondaryPalette.bPageBlock, body.UserTagStatsPage .secondaryPalette.bPageBlock{
+    border-bottom: 0 solid #eaeaea;
+    border-left: 0 solid #eaeaea;
+    border-radius: 0;
+    border-right: 0 solid #eaeaea;
+    border-top: 0px;
+    background: none;
+}
+.apexp .bPageBlock.apexDefaultPageBlock .pbBody .pbSubheader{
+    background: none;
+}
+.clear-bottom .btn, .btn-warning{
+    background: #449d44;
+    line-height: 1.33333;
+    padding: 10px 16px;
+    color: #fff;
+    font-family: open sans;
+    font-size: 22px;
+    font-weight: 400;
+    text-transform: uppercase;
+    border: none;
+}
+.clear-bottom1 .btn, .btn-success{
+    background: #449d44;
+    line-height: 1.33333;
+    padding: 10px 16px;
+    color: #fff;
+    font-family: open sans;
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: uppercase;
+    border: none;
+    min-width: 120px;
+}
+.clear-bottom .btn-warning:focus{
+    background: #449d44;
+}
+.clear-bottom .btn-warning:hover{
+    background: #449d44;
+}
+.col-md-6 .accountTab .tertiaryPalette, .individualPalette .accountBlock .tertiaryPalette, .layoutEdit .individualPalette .accountBlock .tertiaryPalette{
+    background: none;
+}
+.col-md-6 .pbSubheader{
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+.download-link{
+    font-size: 16px; padding-right: 6px; color: rgb(51, 51, 51); font-weight: 600; text-align: right; width: 100%; display: inline-block;
+}
+select:disabled {
+    color: rgb(97, 85, 85);
+    width:256px;
+    height:30px;
+}
+.drop{
+    width:256px;
+    height:30px;
+    border-radius: 5px;
+}
+select[multiple], select[size] {
+    width:256px;
+    height:30px;
+    border-radius: 5px;
+}
+/*************salesforce overwrite css end here************/
+
+</style>
+   
+   <apex:pageMessages />  
+       
+    <apex:form id="theForm" rendered="{!!expired}">
+    
+    
+    
+        
+        <script>
+            function hide() {
+                document.getElementById('{!$Component.theForm.thePageBlockOne.AddCasePanel}').style.display = 'None';
+            }
+
+            function hideLead() {
+                document.getElementById('{!$Component.theForm.thePageBlockOne.AddLeadPanel}').style.display = 'None';
+
+            }
+
+            function EditShow() {            
+                document.getElementById('{!$Component.thePageBlockOne.thepageblockbuttons.save}').style.display = 'InLine'; 
+                document.getElementById('{!$Component.thePageBlockOne.thepageblockbuttons.saveandnext}').style.display = 'InLine';
+                document.getElementById('{!$Component.thePageBlockOne.thepageblockbuttons.cancel}').style.display = 'InLine';
+                document.getElementById('{!$Component.thePageBlockOne.thepageblockbuttons.edit}').style.display = 'None';
+                document.getElementById('{!$Component.thePageBlockOne.thepageblockbuttons.nextstep}').style.display = 'None';
+                
+                document.getElementById('{!$Component.thePageBlockOne.thepageblockbuttonsbottom.savebottom}').style.display = 'InLine'; 
+                document.getElementById('{!$Component.thePageBlockOne.thepageblockbuttonsbottom.saveandnextbottom}').style.display = 'InLine';
+                document.getElementById('{!$Component.thePageBlockOne.thepageblockbuttonsbottom.cancelbottom}').style.display = 'InLine';
+                document.getElementById('{!$Component.thePageBlockOne.thepageblockbuttonsbottom.editbottom}').style.display = 'None';
+                document.getElementById('{!$Component.thePageBlockOne.thepageblockbuttonsbottom.nextstepbottom}').style.display = 'None';
+                document.getElementById("hideDiv").style.display = "inline";
+                document.getElementById("showDiv").style.display = "none";
+                document.getElementById("hideDivP").style.display = "inline";
+                document.getElementById("showDivP").style.display = "none"; 
+                document.getElementById("hideDivC").style.display = "inline";
+                document.getElementById("showDivC").style.display = "none";
+                document.getElementById("hideDivOpp").style.display = "inline";
+                document.getElementById("showDivOpp").style.display = "none";                   
+                
+                document.getElementById("hideDiv").style.display = "inline";
+                document.getElementById("showDiv").style.display = "none";
+                document.getElementById("hideCaseDiv").style.display = "inline";
+                document.getElementById("showCaseDiv").style.display = "none";
+                
+                document.getElementById("hideDiv").style.display = "inline";
+                document.getElementById("showDiv").style.display = "none";
+                document.getElementById("hideAccDiv").style.display = "inline";
+                document.getElementById("showAccDiv").style.display = "none";
+                
+                document.getElementById("hideOppDiv").style.display = "inline";
+                document.getElementById("showOppDiv").style.display = "none";
+                
+                document.getElementById("hideLeadNotification").style.display = "inline";
+                document.getElementById("showLeadNotification").style.display = "none";
+                document.getElementById("hideAccNotification").style.display = "inline";
+                document.getElementById("showAccNotification").style.display = "none";
+                document.getElementById("hideOppNotification").style.display = "inline";
+                document.getElementById("showOppNotification").style.display = "none";
+                document.getElementById("cyclehideDiv").style.display = "inline";
+                document.getElementById("cycleshowDiv").style.display = "none";
+                document.getElementById("hideCaseNotification").style.display = "inline";
+                document.getElementById("showCaseNotification").style.display = "none";
+                
+                document.getElementById("defaultUserO").style.display = "inline";
+                document.getElementById("defaultUser").style.display = "none";
+                
+                //--------------Automated Distribution [RRD-227] Start--------------------
+                document.getElementById("hideAutomatedDistribution").style.display = "inline";
+                document.getElementById("showAutomatedDistribution").style.display = "none";
+                if(document.getElementById('{!$Component.thePageBlockOne.hidepgaeblocksectionAutomatedDistribution.DistributeHourly}').checked == false && 
+                document.getElementById('{!$Component.thePageBlockOne.hidepgaeblocksectionAutomatedDistribution.DistributeDaily}').checked == false){
+                    document.getElementById('{!$Component.thePageBlockOne.hidepgaeblocksectionAutomatedDistribution.SkipWeekends}').disabled = true;
+                }
+                //--------------Automated Distribution [RRD-227] End--------------------
+                
+                prevOwner();
+                prevOwnerCase();
+                prevOwnerOpp();
+            }
+
+            function allLead() {
+                if (document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksection.allLeadOnlineUSer}')).checked == true) {
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksection.allLeadOnlineUSer}')).checked = false;
+                }
+            }
+            /////////////////////////Sunaiyana///////////////////////
+            function prevOwner() {
+                if (document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionP.allLeadOnlineUSer}')).checked == true) {
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionP.allLeadOnlineUSer}')).checked = true;
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionP.leadSelect}')).disabled = false;
+                }
+                
+                if (document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionP.allLeadOnlineUSer}')).checked == false) {
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionP.allLeadOnlineUSer}')).checked = false;
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionP.leadSelect}')).disabled = true;
+                }
+
+            }
+            function prevOwnerCase() {
+                if (document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionC.allLeadOnlineUSer}')).checked == true) {
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionC.allLeadOnlineUSer}')).checked = true;
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionC.caseSelect}')).disabled = false;
+                }
+                
+                if (document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionC.allLeadOnlineUSer}')).checked == false) {
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionC.allLeadOnlineUSer}')).checked = false;
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionC.caseSelect}')).disabled = true;
+                }
+
+            }
+            function prevOwnerOpp() {
+                if (document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionO.allOppOnlineUSer}')).checked == true) {
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionO.allOppOnlineUSer}')).checked = true;
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionO.oppSelect}')).disabled = false;
+                }
+                
+                if (document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionO.allOppOnlineUSer}')).checked == false) {
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionO.allOppOnlineUSer}')).checked = false;
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionO.oppSelect}')).disabled = true;
+                }
+
+            }
+            ////////////////////////////////////////////
+            function allOnlineUSer() {
+                if (document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksection.allLeadUSer}')).checked == true) {
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksection.allLeadUSer}')).checked = false;
+                }
+            }
+
+            function allCase() {
+                if (document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionCase.allCaseOnlineUSer}')).checked == true) {
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionCase.allCaseOnlineUSer}')).checked = false;
+                }
+            }
+            
+            /////////////////////////////////////////rohan
+            function allAccount() {
+                if (document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionAccount.allAccountOnlineUSer}')).checked == true) {
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionAccount.allAccountOnlineUSer}')).checked = false;
+                }
+            }
+            
+            function allOnAccountUSer() {
+                if (document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionAccount.allAccountUSer}')).checked == true) {
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionAccount.allAccountUSer}')).checked = false;
+                }
+            }
+            
+            function allOpportunity() {
+                if (document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionOpp.allOppOnlineUSer}')).checked == true) {
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionOpp.allOppOnlineUSer}')).checked = false;
+                }
+            }
+            
+            function allOnOpportunityUSer() {
+                if (document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionOpp.allOppUSer}')).checked == true) {
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionOpp.allOppUSer}')).checked = false;
+                }
+            }
+                        
+
+            function allOnCaseUSer() {
+                if (document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionCase.allCaseUSer}')).checked == true) {
+                    document.getElementById(('{!$Component.thePageBlockOne.hidepgaeblocksectionCase.allCaseUSer}')).checked = false;
+                }
+            }
+          
+        function uncheckOther(elm) {
+            document.getElementById('{!$Component.thePageBlockOne.Hourlydistribution}').checked=false;
+            document.getElementById('{!$Component.thePageBlockOne.Dailydistribution}').checked=false;
+            document.getElementById('{!$Component.thePageBlockOne.weeklydistribution}').checked=false;
+            document.getElementById('{!$Component.thePageBlockOne.monthlydistribution}').checked=false;
+            elm.checked=true;
+            
+            if (document.getElementById(('{!$Component.thePageBlockOne.weeklydistribution}')).checked == true){
+                document.getElementById(('{!$Component.theForm.thePageBlockOne.weeklydistribution}')).disabled = true ;
+                document.getElementById(('{!$Component.theForm.thePageBlockOne.monthlydistribution}')).disabled = false;
+                document.getElementById(('{!$Component.theForm.thePageBlockOne.Dailydistribution}')).disabled = false;
+                document.getElementById(('{!$Component.theForm.thePageBlockOne.Hourlydistribution}')).disabled = false;
+            }
+            else if(document.getElementById(('{!$Component.thePageBlockOne.monthlydistribution}')).checked == true){
+                document.getElementById(('{!$Component.theForm.thePageBlockOne.monthlydistribution}')).disabled = true ;
+                document.getElementById(('{!$Component.theForm.thePageBlockOne.weeklydistribution}')).disabled = false;
+                document.getElementById(('{!$Component.theForm.thePageBlockOne.Dailydistribution}')).disabled = false;
+                document.getElementById(('{!$Component.theForm.thePageBlockOne.Hourlydistribution}')).disabled = false;
+            }
+            else if(document.getElementById(('{!$Component.thePageBlockOne.Dailydistribution}')).checked == true){
+                document.getElementById(('{!$Component.theForm.thePageBlockOne.Dailydistribution}')).disabled = true ;
+                document.getElementById(('{!$Component.theForm.thePageBlockOne.weeklydistribution}')).disabled = false;
+                document.getElementById(('{!$Component.theForm.thePageBlockOne.monthlydistribution}')).disabled = false;
+                document.getElementById(('{!$Component.theForm.thePageBlockOne.Hourlydistribution}')).disabled = false;
+            }
+            else if(document.getElementById(('{!$Component.thePageBlockOne.Hourlydistribution}')).checked == true){
+                document.getElementById(('{!$Component.theForm.thePageBlockOne.Hourlydistribution}')).disabled = true;
+                document.getElementById(('{!$Component.theForm.thePageBlockOne.Dailydistribution}')).disabled = false;
+                document.getElementById(('{!$Component.theForm.thePageBlockOne.weeklydistribution}')).disabled = false;
+                document.getElementById(('{!$Component.theForm.thePageBlockOne.monthlydistribution}')).disabled = false;
+            }
+
+            
+        }
+    
+    //--------------Automated Distribution [RRD-227] Start--------------------  
+        function uncheckOtherAutomatedDistribution(elm) {
+            if(elm.checked==true){
+                document.getElementById('{!$Component.thePageBlockOne.hidepgaeblocksectionAutomatedDistribution.DistributeHourly}').checked=false;
+                document.getElementById('{!$Component.thePageBlockOne.hidepgaeblocksectionAutomatedDistribution.DistributeDaily}').checked=false;
+                document.getElementById('{!$Component.thePageBlockOne.hidepgaeblocksectionAutomatedDistribution.SkipWeekends}').checked=false;
+                document.getElementById('{!$Component.thePageBlockOne.hidepgaeblocksectionAutomatedDistribution.SkipWeekends}').disabled=false;
+                elm.checked = true
+            }
+            else if(elm.checked==false){
+                elm.checked = false;
+                document.getElementById('{!$Component.thePageBlockOne.hidepgaeblocksectionAutomatedDistribution.SkipWeekends}').disabled=true;
+                document.getElementById('{!$Component.thePageBlockOne.hidepgaeblocksectionAutomatedDistribution.SkipWeekends}').checked=false;
+            }
+        }
+    //--------------Automated Distribution [RRD-227] End--------------------   
+    
+    
+        function saveWrongUser(){
+            var user = document.getElementById(('{!$Component.theForm:thePageBlockOne.defaltUserO.inputUser}')).value;
+            var t = '{!temp}';
+            if({!showErr}==true || user!=t){
+                EditShow();
+            }           
+        }
+        
+       
+        </script>
+
+        <apex:actionStatus id="sts" style="align:center;">
+            <apex:facet name="start">
+                <div>
+                    <div class="popupBackground" />
+                    <div class="PopupPanel">
+                        <table>
+                            <tr>
+                                <td align="center"><img src="{!$Resource.Loading}" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </apex:facet>
+        </apex:actionStatus>
+        
+        
+       <!--Landing page start here-->
+       <div class="innerWrapper">
+        <apex:pageBlock id="thePageBlockOneformessage" rendered="{!briefintro == true}" >
+                    <div class="container">
+                        <p style="text-align: center;"><apex:image url="{!$Resource.rrde__RRDLogo}" /></p>
+                        <h2 style="margin-top:0;">Account, Opportunity, Lead and case management made Easy</h2>
+                        <p>Automating your Account, opportunity, lead and case assignment has never been so simple and effective. RRD can eliminate your Account, opportunity, lead and case distribution problem by automating the assignment as per your will. Just configure the assigment criteria and let RRD solve all your assignment problems. Its like Plug and Play.</p>
+                        <br/>
+                        <div class="row">
+                            <ul class="steps">
+                                <li  style="height:145px">
+                                     <span class="step-heading">Step 1: Configure the RRD admin Panel</span>
+                                     <span class="step-title">a. Lead assignment/notification method</span>
+                                     <span class="step-title">b. Case assignment/notification method</span>
+                                     <span class="step-title">c. Account assignment/notification method</span>
+                                     <span class="step-title">d. Opportunity assignment/notification method</span>
+                                     <span class="step-title">e. Assignment cycle</span>
+                                </li>
+                                <li  style="height:145px">
+                                    <span class="step-heading">Step 2: Create RRD teams and users</span>
+                                    <span class="step-title">a. Create teams defining assignment rules and criterion</span>
+                                    <span class="step-title">b. Assign and configure users to the RRD teams</span>
+                                </li>
+                            </ul>
+                        </div>
+                       <br/><br/>
+                        <div class="row">
+                            <h2 style="text-align: left;">Distribution From Queue</h2>
+                            <div class="feature-list">                 
+                                <p>If you have enabled round robin distribution for online users, but at runtime there is no user found, in that case round robin sends lead/case to the Round Robin Queue OR If you have define the target for your team or users in your current cycle.  After completion of target of the Team or user.In that case round robin sends lead/case to the Round Robin Queue.Don't just click a single button "Distribute Lead/Case" and redistribution would be done automatically. </p>
+                            </div>
+                        </div>
+                        <div class="row clear-bottom">
+                            <apex:commandButton style="border: none; width: 230px;" title="Get Started" styleClass="btn-warning btn-lg" value="Configure" action="{!clickok}"/><br/> 
+                            <apex:inputCheckbox value="{!RoundRobin.rrde__Dont_show_welcome_page__c}"/> &nbsp;  <span style="font-size: 13px; color: #333;">Don't show this message again.</span> 
+                        </div>
+                    </div>         
+        </apex:pageBlock>
+          </div>  
+       <!--Landing page end here-->
+       
+   
+       <!--step 1 page start here-->
+        <apex:pageBlock id="thePageBlockOne" rendered="{!briefintro == false}">
+            <div class="container">
+           <!-- <h1 style="font-size: 2em;margin-left: 250px;">Round Robin Configuration</h1>-->
+           <div class="row" >
+            <apex:pageBlockButtons id="thepageblockbuttons" location="top" style="float: right;margin-right: 6%;" styleClass="clear-bottom1">            
+                <apex:commandButton value="Save" action="{!saveRecord}" oncomplete="saveWrongUser()" id="save" reRender="theForm" status="sts" styleClass="btn-success" style="display:none;margin-right:12px;" />                
+                <apex:commandButton value="Save and Next Step" action="{!saveandNext}" oncomplete="saveWrongUser()" id="saveandnext" reRender="theForm" status="sts" styleClass="btn-success" style="display:none;align-left:24px;margin-right:12px;"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" id="cancel" reRender="theForm" status="sts" styleClass="btn-success" style="display:none;" />
+                <apex:commandButton value="Edit" id="edit" oncomplete="EditShow()" reRender="theForm" status="sts" styleClass="btn-success" style="margin-right:12px;"/>
+                <apex:commandButton value="Next Step" action="{!secondTab}" reRender="theForm" status="sts" styleClass="btn-success" id="nextstep"/>                            
+            </apex:pageBlockButtons>
+            <apex:pageBlockButtons id="thepageblockbuttonsbottom" location="bottom" style="float: right;margin-right: 6%;" styleClass="clear-bottom1">            
+                <apex:commandButton value="Save" action="{!saveRecord}" oncomplete="saveWrongUser()" id="savebottom" reRender="theForm" status="sts" styleClass="btn-success" style="display:none;margin-right:12px;" />               
+                <apex:commandButton value="Save and Next Step" action="{!saveandNext}" oncomplete="saveWrongUser()" id="saveandnextbottom" reRender="theForm" status="sts" styleClass="btn-success" style="display:none;margin-right:12px;"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" id="cancelbottom" reRender="theForm" status="sts" styleClass="btn-success" style="display:none;" />
+                <apex:commandButton value="Edit" id="editbottom" oncomplete="EditShow()" reRender="theForm" status="sts" styleClass="btn-success" style="margin-right:12px;" />
+                <apex:commandButton value="Next Step" action="{!secondTab}" reRender="theForm" status="sts" styleClass="btn-success" id="nextstepbottom"/>                           
+            </apex:pageBlockButtons>
+            </div>
+            <div class="row">
+                            <!--span class="download-link">Click Here : <apex:outputLink value="{!URLFOR($Resource.TutorialRoundRobin)}" style="color: #1797c0; border-bottom: solid 1px #1797c0; text-decoration: none;" target="_blank">Round Robin Configuration Tutorial Document</apex:outputLink></span>-->
+                            <span class="download-link">Click Here : <apex:outputLink value="{!URLFOR($Resource.rrde__RRDUserManualPdf20)}" style="color: #1797c0; border-bottom: solid 1px #1797c0; text-decoration: none;" target="_blank">Round Robin Configuration Tutorial Document</apex:outputLink></span>
+
+                <span class="download-link">Click for FAQs on  &nbsp; <apex:outputLink value="http://mirketa.com/round-robin-distributor-FAQ.html" style="color: #1797c0; border-bottom: solid 1px #1797c0; text-decoration: none;" target="_blank">Round Robin Distribution</apex:outputLink></span>
+            </div>    
+           
+
+
+            <div class="row custom-col">
+                <div class="col-md-6">
+                    <apex:pageBlockSection title="Lead Assignment Method" id="thePageBlockSectionOne" columns="3" collapsible="false"/>
+                </div>
+            </div>
+            
+            
+            <div class="row custom-col-grey">
+                <div id="showDiv">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="showpgaeblocksection">
+                            <apex:outputField value="{!RoundRobin.rrde__Enable_Round_Robin_for_Lead_Online_Users__c}" />
+                            <apex:outputField value="{!RoundRobin.rrde__Enable_for_All_Lead_Round_Robin_Users__c}" />
+                        </apex:pageBlockSection>
+                     </div> 
+                </div>
+                <div style="display:none" id="hideDiv">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="hidepgaeblocksection">
+                            <apex:inputField value="{!RoundRobin.rrde__Enable_Round_Robin_for_Lead_Online_Users__c}" id="allLeadOnlineUSer" onclick="allOnlineUSer()" />
+                            <apex:inputField value="{!RoundRobin.rrde__Enable_for_All_Lead_Round_Robin_Users__c}" id="allLeadUSer" onclick="allLead()" />
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+             </div>  
+             <div class="row custom-col-grey">
+                <div id="showDivP">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="showpgaeblocksectionP">
+                            <apex:outputField value="{!RoundRobin.rrde__Enable_assignment_to_previous_owner_c__c}" />
+                            <br/>
+                            <apex:selectList value="{!selectedFieldLead}" size="1" disabled="true" styleClass="drop" label="Field to determine relationship">
+                                <apex:selectOptions value="{!fieldsForLead}"/>
+                            </apex:selectList>
+                        </apex:pageBlockSection>
+                     </div> 
+                </div>
+                <div style="display:none" id="hideDivP">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="hidepgaeblocksectionP">
+                            <apex:inputField value="{!RoundRobin.rrde__Enable_assignment_to_previous_owner_c__c}" id="allLeadOnlineUSer"  onclick="prevOwner()"/>
+                            <br/>
+                            <apex:selectList value="{!selectedFieldLead}" size="1" id="leadSelect" styleClass="drop" label="Field to determine relationship">
+                                <apex:selectOptions value="{!fieldsForLead}"/>
+                            </apex:selectList>
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+             </div>  
+             
+            
+            <div class="row custom-col">
+                <div class="col-md-6">
+                    <apex:pageBlockSection title="Lead Notification" id="theLeadNotification" columns="3" collapsible="false" />
+                </div>
+            </div>
+            
+            <div class="row custom-col-grey">
+                <div id="showLeadNotification">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="showpgaeblocksectionLeadNotification">
+                            <apex:outputField value="{!RoundRobin.rrde__Notify_by_Email_to_Lead_Owner__c}" />
+                            <apex:outputField value="{!RoundRobin.rrde__Notify_by_Task_to_Lead_Owner__c}" />
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+                <div style="display:none" id="hideLeadNotification">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="hidepgaeblocksectionLeadNotification">
+                            <apex:inputField value="{!RoundRobin.rrde__Notify_by_Email_to_Lead_Owner__c}" />
+                            <apex:inputField value="{!RoundRobin.rrde__Notify_by_Task_to_Lead_Owner__c}" />
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+            </div>
+
+                
+            <div class="row custom-col">
+                <div class="col-md-6">
+                    <apex:pageBlockSection title="Case Assignment Method" id="thePageBlockSectionOneforCase" columns="3" collapsible="false" />
+               </div>
+           </div>
+            <div class="row custom-col-grey">
+                <div id="showCaseDiv">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="showpgaeblocksectionCase">
+                            <apex:outputField value="{!RoundRobin.rrde__Enable_Round_Robin_for_Case_Online_Users__c}" />
+                            <apex:outputField value="{!RoundRobin.rrde__Enable_for_All_Case_Round_Robin_Users__c}" />
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+                <div style="display:none" id="hideCaseDiv">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="hidepgaeblocksectionCase">
+                            <apex:inputField value="{!RoundRobin.rrde__Enable_Round_Robin_for_Case_Online_Users__c}" id="allCaseOnlineUSer" onclick="allOnCaseUSer()" />
+                            <apex:inputField value="{!RoundRobin.rrde__Enable_for_All_Case_Round_Robin_Users__c}" id="allCaseUSer" onclick="allCase()" />
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row custom-col-grey">
+                <div id="showDivC">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="showpgaeblocksectionC">
+                            <apex:outputField value="{!RoundRobin.rrde__Enable_relationship_based_assignment_c__c}" />
+                            <br/>
+                            <apex:selectList value="{!selectedFieldCase}" size="1" disabled="true" styleClass="drop" label="Field to determine relationship">
+                                <apex:selectOptions value="{!fieldsForCase}"/>
+                            </apex:selectList>
+                        </apex:pageBlockSection>
+                     </div> 
+                </div>
+                <div style="display:none" id="hideDivC">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="hidepgaeblocksectionC">
+                            <apex:inputField value="{!RoundRobin.rrde__Enable_relationship_based_assignment_c__c}" id="allLeadOnlineUSer"  onclick="prevOwnerCase()"/>
+                            <br/>
+                            <apex:selectList value="{!selectedFieldCase}" size="1" id="caseSelect" styleClass="drop" label="Field to determine relationship">
+                                <apex:selectOptions value="{!fieldsForCase}"/>
+                            </apex:selectList>
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+             </div>
+
+            <div class="row custom-col">
+                <div class="col-md-6">
+                    <apex:pageBlockSection title="Case Notification" id="theCaseNotification" columns="3" collapsible="false" />
+                </div>
+            </div>
+            <div class="row custom-col-grey">
+                <div id="showCaseNotification">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="showpgaeblocksectionCaseNotification">
+                            <apex:outputField value="{!RoundRobin.rrde__Notify_by_Email_to_Case_Owner__c}" />
+                            <apex:outputField value="{!RoundRobin.rrde__Notify_by_Task_to_Case_Owner__c}" />
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+                <div style="display:none" id="hideCaseNotification">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="hidepgaeblocksectionCaseNotification">
+                            <apex:inputField value="{!RoundRobin.rrde__Notify_by_Email_to_Case_Owner__c}" />
+                            <apex:inputField value="{!RoundRobin.rrde__Notify_by_Task_to_Case_Owner__c}" />
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+            </div>
+
+
+<!----Account------------->
+
+<div class="row custom-col">
+                <div class="col-md-6">
+                    <apex:pageBlockSection title="Account Assignment Method" id="thePageBlockSectionOneforCase1" columns="3" collapsible="false" />
+               </div>
+           </div>
+            <div class="row custom-col-grey">
+                <div id="showAccDiv">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="showpgaeblocksectionCase1">
+                         <apex:outputField value="{!RoundRobin.rrde__Enable_Round_Robin_Account_online_Users__c}"/> 
+                         <apex:outputField value="{!RoundRobin.rrde__Enable_Round_Robin_Account_All_Users__c}" />                                             
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+                <div style="display:none" id="hideAccDiv">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="hidepgaeblocksectionAccount">
+                            <apex:inputField value="{!RoundRobin.rrde__Enable_Round_Robin_Account_online_Users__c}" id="allAccountOnlineUSer" onclick="allOnAccountUSer()" />
+                            <apex:inputField value="{!RoundRobin.rrde__Enable_Round_Robin_Account_All_Users__c}" id="allAccountUSer" onclick="allAccount()" />
+                            </apex:pageBlockSection>
+                    </div>
+                </div>
+             </div>
+             
+             <div class="row custom-col-grey" id="defAcc">
+                <div id="defaultUser">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="defaltUser">
+                            <apex:outputField value="{!team.rrde__Default_Owner__c}" />
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+                <div style="display:none" id="defaultUserO">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="defaltUserO">
+                            <apex:inputField value="{!team.rrde__Default_Owner__c}" style="height:25px" id="inputUser"/>
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+            </div>
+                                                                                                                                     
+            
+            <div class="row custom-col">
+                <div class="col-md-6">
+                    <apex:pageBlockSection title="Account Notification" id="theAccountNotification" columns="3" collapsible="false" />
+                </div>
+            </div>
+            
+            <div class="row custom-col-grey">
+                <div id="showAccNotification">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="showpgaeblocksectionAccNotification">
+                            <apex:outputField value="{!RoundRobin.rrde__Notify_Account_Owner_via_Email__c}" />
+                            <apex:outputField value="{!RoundRobin.rrde__Notify_Account_Owner_via_Task__c}" />
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+                <div style="display:none" id="hideAccNotification">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="hidepgaeblocksectionAccNotification">
+                            <apex:inputField value="{!RoundRobin.rrde__Notify_Account_Owner_via_Email__c}" />
+                            <apex:inputField value="{!RoundRobin.rrde__Notify_Account_Owner_via_Task__c}" />
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+            </div>  
+
+<!----Account------------->
+
+<!----Opportunity-->
+
+<div class="row custom-col">
+                <div class="col-md-6">
+                    <apex:pageBlockSection title="Opportunity Assignment Method" id="thePageBlockSectionOneforOpp1" columns="3" collapsible="false" />
+               </div>
+           </div>
+            <div class="row custom-col-grey">
+                <div id="showOppDiv">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="showpgaeblocksectionOpp1">
+                         <apex:outputField value="{!RoundRobin.rrde__Enable_Round_Robin_Oppty_online_Users__c}"/> 
+                         <apex:outputField value="{!RoundRobin.rrde__Enable_Round_Robin_Opportunity_All_Users__c}" />                                             
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+                <div style="display:none" id="hideOppDiv">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="hidepgaeblocksectionOpp">
+                            <apex:inputField value="{!RoundRobin.rrde__Enable_Round_Robin_Oppty_online_Users__c}" id="allOppOnlineUSer" onclick="allOnOpportunityUSer()" />
+                            <apex:inputField value="{!RoundRobin.rrde__Enable_Round_Robin_Opportunity_All_Users__c}" id="allOppUSer" onclick="allOpportunity()" />
+                            </apex:pageBlockSection>
+                    </div>
+                </div>
+             </div>
+             
+            <div class="row custom-col-grey">
+                <div id="showDivOpp">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="showpgaeblocksectionO">
+                            <apex:outputField value="{!RoundRobin.rrde__Enable_relationship_based_assignment_opp__c}" />
+                            <br/>
+                            <apex:selectList value="{!selectedFieldOpp}" size="1" disabled="true" styleClass="drop" label="Field to determine relationship">
+                                <apex:selectOptions value="{!fieldsForOpp}"/>
+                            </apex:selectList>
+                        </apex:pageBlockSection>
+                     </div> 
+                </div>
+                <div style="display:none" id="hideDivOpp">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="hidepgaeblocksectionO">
+                            <apex:inputField value="{!RoundRobin.rrde__Enable_relationship_based_assignment_opp__c}" id="allOppOnlineUSer"  onclick="prevOwnerOpp()"/>
+                            <br/>
+                            <apex:selectList value="{!selectedFieldOpp}" size="1" id="oppSelect" styleClass="drop" label="Field to determine relationship">
+                                <apex:selectOptions value="{!fieldsForOpp}"/>
+                            </apex:selectList>
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+             </div>
+             
+             <div class="row custom-col">
+                <div class="col-md-6">
+                    <apex:pageBlockSection title="Opportunity Notification" id="theOppNotification" columns="3" collapsible="false" />
+                </div>
+            </div>
+            <div class="row custom-col-grey">
+                <div id="showOppNotification">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="showpgaeblocksectionOppNotification">
+                            <apex:outputField value="{!RoundRobin.rrde__Notify_Opportunity_Owner_via_Email__c}" />
+                            <apex:outputField value="{!RoundRobin.rrde__Notify_Opportunity_Owner_via_Task__c}" />
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+                <div style="display:none" id="hideOppNotification">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="hidepgaeblocksectionOppNotification">
+                            <apex:inputField value="{!RoundRobin.rrde__Notify_Opportunity_Owner_via_Email__c}" />
+                            <apex:inputField value="{!RoundRobin.rrde__Notify_Opportunity_Owner_via_Task__c}" />
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+            </div>  
+            
+<!--------------Automated Distribution [RRD-227] Start-------------------->         
+            <div class="row custom-col">
+                <div class="col-md-6">
+                    <apex:pageBlockSection title="Automated Distribution" id="thePageBlockSectionforAutomatedDistribution" columns="3" collapsible="false" />
+                </div>
+                
+            </div>
+            
+            
+            <div class="row custom-col-grey">
+                <div id="showAutomatedDistribution">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="showpgaeblocksectionAutomatedDistribution">
+                            <apex:outputField value="{!RoundRobin.rrde__Distribute_Hourly__c}" />
+                            <apex:outputField value="{!RoundRobin.rrde__Distribute_Daily__c}" />
+                            <apex:outputField value="{!RoundRobin.rrde__Skip_Weekends__c}" />
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+                <div style="display:none" id="hideAutomatedDistribution">
+                    <div class="col-md-12">
+                        <apex:pageBlockSection id="hidepgaeblocksectionAutomatedDistribution">
+                            <apex:inputField id="DistributeHourly" value="{!RoundRobin.rrde__Distribute_Hourly__c}" onclick="uncheckOtherAutomatedDistribution(this)" />
+                            <apex:inputField id="DistributeDaily" value="{!RoundRobin.rrde__Distribute_Daily__c}" onclick="uncheckOtherAutomatedDistribution(this)" />
+                            <apex:inputField id="SkipWeekends" value="{!RoundRobin.rrde__Skip_Weekends__c}" />
+                        </apex:pageBlockSection>
+                    </div>
+                </div>
+            </div> 
+<!--------------Automated Distribution [RRD-227] End-------------------->           
+
+<!--Opportunity------------->
+            
+
+            <div class="row custom-col">
+                <div class="col-md-6">
+                    <apex:pageBlockSection title="Assignment  Cycle" id="thePageBlockSectionforCycle" columns="3" collapsible="false" />
+                </div>
+                
+            </div>
+            
+            
+            <div id="cycleshowDiv" style="width:100%">
+                     <div class="row custom-col-grey">
+                     <!--------------Automated Distribution [RRD-228] End-------------------->           
+
+                     <div class="col-md-3">
+                            <apex:outputLabel title="Check if Assignment is Hourly" value="Hourly Assignment " styleClass="outputlableclass">
+                            <img src="/s.gif" alt="Help" class="helpIcon" title="Check this box for the assignment cycle, Users/Team Capping to be reset on Hourly Basis"/>
+                            </apex:outputLabel> 
+                            <apex:outputField value="{!RoundRobin.rrde__Hourly_Assignment__c}" />
+                        </div>
+                        <!--------------Automated Distribution [RRD-228] End-------------------->
+                        <div class="col-md-3">
+                            <apex:outputLabel title="Check if Assignment is Daily" value="Daily Assignment " styleClass="outputlableclass">
+                            <img src="/s.gif" alt="Help" class="helpIcon" title="Check this box for the assignment cycle, Users/Team Capping to be reset on Daily Basis"/>
+                            </apex:outputLabel> 
+                            <apex:outputField value="{!RoundRobin.rrde__Daily_Distribution__c}" />
+                        </div>
+                        <div class="col-md-3">
+                            <apex:outputLabel title="Check if Assignment is Weekly" value="Weekly Assignment " styleClass="outputlableclass">
+                            <img src="/s.gif" alt="Help" class="helpIcon" title="Check this box for the assignment cycle, Users/Team Capping to be reset on Weekly Basis"/>
+                            </apex:outputLabel> 
+                            <apex:outputField value="{!RoundRobin.rrde__Weekly_Distribution__c}" />
+                        </div>   
+                        <div class="col-md-3">
+                            <apex:outputLabel title="Check if Assignment is Monthly" value="Monthly Assignment " styleClass="outputlableclass">
+                            <img src="/s.gif" alt="Help" class="helpIcon" title="Check this box for the assignment cycle, Users/Team Capping to be reset on Monthly Basis"/>
+                            </apex:outputLabel> 
+                            <apex:outputField value="{!RoundRobin.rrde__Monthly_Distribution__c}" />
+                        </div>   
+                    </div>   
+             </div>
+            
+            
+              <div style="display:none" id="cyclehideDiv">
+                    <div class="row custom-col-grey">
+                    <!--------------Automated Distribution [RRD-228] End-------------------->
+                    <div class="col-md-3">
+                        <apex:outputLabel title="Check if Assignment is Hourly" value="Hourly Assignment " styleClass="outputlableclass">
+                        <img src="/s.gif" alt="Help" class="helpIcon" title="Check this box for the assignment cycle, Users/Team Capping to be reset on Hourly Basis"/>
+                            </apex:outputLabel> 
+                        <apex:inputCheckbox title="Check if Assignment is Hourly" value="{!RoundRobin.rrde__Hourly_Assignment__c}" id="Hourlydistribution" onclick="uncheckOther(this)" />
+                    </div>
+                    <!--------------Automated Distribution [RRD-228] End-------------------->
+                    <div class="col-md-3">
+                        <apex:outputLabel title="Check if Assignment is Daily" value="Daily Assignment " styleClass="outputlableclass">
+                        <img src="/s.gif" alt="Help" class="helpIcon" title="Check this box for the assignment cycle, Users/Team Capping to be reset on Daily Basis"/>
+                            </apex:outputLabel> 
+                        <apex:inputCheckbox title="Check if Assignment is Daily" value="{!RoundRobin.rrde__Daily_Distribution__c}" id="Dailydistribution" onclick="uncheckOther(this)" />
+                    </div>
+                    <div class="col-md-3">
+                        <apex:outputLabel title="Check if Assignment is Weekly" value="Weekly Assignment " styleClass="outputlableclass">
+                        <img src="/s.gif" alt="Help" class="helpIcon" title="Check this box for the assignment cycle, Users/Team Capping to be reset on Weekly Basis"/>
+                            </apex:outputLabel> 
+                        <apex:inputCheckbox title="Check if Assignment is Weekly" value="{!RoundRobin.rrde__Weekly_Distribution__c}" id="weeklydistribution" onclick="uncheckOther(this)" />
+                        
+                    </div>                                     
+                    <div class="col-md-3">
+                        <apex:outputLabel title="Check if Assignment is Monthly" value="Monthly Assignment " styleClass="outputlableclass">
+                        <img src="/s.gif" alt="Help" class="helpIcon" title="Check this box for the assignment cycle, Users/Team Capping to be reset on Monthly Basis"/>
+                            </apex:outputLabel> 
+                        <apex:inputCheckbox title="Check if Assignment is Monthly" value="{!RoundRobin.rrde__Monthly_Distribution__c}" id="monthlydistribution" onclick="uncheckOther(this)" />
+                        
+                    </div>           
+                </div>
+            </div>
+            
+            <div class="row custom-col-grey">
+            <!--------------Automated Distribution [RRD-228] End-------------------->
+            <div class="col-md-3">
+                    <apex:outputLabel value="Hourly Assignment Start Time" styleClass="outputlableclass"/>
+                    <apex:outputfield value="{!RoundRobin.rrde__Hourly_Distribution_Start_Time__c}" /> 
+                </div>
+                <!--------------Automated Distribution [RRD-228] End-------------------->
+                <div class="col-md-3">
+                    <apex:outputLabel value="Daily Assignment  Start Date" styleClass="outputlableclass"/>
+                    <apex:outputfield value="{!RoundRobin.rrde__Daily_Distribution_Date__c}" /> 
+                </div>
+                <div class="col-md-3">
+                    <apex:outputLabel value="Current Weekly Cycle Start date" styleClass="outputlableclass"/>
+                    <apex:outputField value="{!RoundRobin.rrde__Current_Weekly_Cycle_Start_date__c}" /> 
+                </div>
+                <div class="col-md-3">
+                    <apex:outputLabel value="Current Monthly Cycle Start date" styleClass="outputlableclass"/>
+                    <apex:outputField value="{!RoundRobin.rrde__Current_Monthly_Cycle_Start_date__c}" />
+                </div>
+            </div>  
+            
+            <div class="row custom-col-grey">
+            <!--------------Automated Distribution [RRD-228] End-------------------->
+            <div class="col-md-3">
+                    <apex:outputLabel value="Hourly Assignment  End Time" styleClass="outputlableclass"/>
+                    <apex:outputField value="{!RoundRobin.rrde__Hourly_Distribution_End_Time__c}" />
+                </div>
+               <!--------------Automated Distribution [RRD-228] End-------------------->
+
+                <div class="col-md-3">
+                    <apex:outputLabel value="Daily Assignment  End Date" styleClass="outputlableclass"/>
+                    <apex:outputField value="{!RoundRobin.rrde__Daily_Distribution_End_Date__c}" />
+                </div>
+               
+                <div class="col-md-3">
+                    <apex:outputLabel value="Current Weekly Cycle End date" styleClass="outputlableclass"/>
+                    <apex:outputField value="{!RoundRobin.rrde__Current_Weekly_Cycle_End_date__c}" />
+                </div>
+                <div class="col-md-3">
+                    <apex:outputLabel value="Current Monthly Cycle End date" styleClass="outputlableclass"/>
+                    <apex:outputField value="{!RoundRobin.rrde__Current_Monthly_Cycle_End_date__c}" />
+                </div>
+            </div>
+          </div>      
+        </apex:pageBlock>
+       
+    </apex:form>
+</apex:page>

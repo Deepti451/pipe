@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- Combination of lead and case criteria --></help>
+        <label><!-- All Criteria --></label>
+        <name>rrde__All_Criteria__c</name>
+    </fields>
+    <fields>
+        <label><!-- Allowed Number of Open Cases --></label>
+        <name>rrde__Allowed_Number_of_Open_Cases__c</name>
+    </fields>
+    <fields>
+        <help><!-- Record assign to a team in the current cycle. --></help>
+        <label><!-- Assigned records in current cycle --></label>
+        <name>rrde__Assigned_records_current_cycle__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Criteria --></label>
+        <name>rrde__Case_Criteria__c</name>
+    </fields>
+    <fields>
+        <help><!-- Use to capture the case origin --></help>
+        <label><!-- Case Origin --></label>
+        <name>rrde__Case_Origin__c</name>
+    </fields>
+    <fields>
+        <help><!-- Use to capture the case reason --></help>
+        <label><!-- Case Reason --></label>
+        <name>rrde__Case_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>rrde__Country__c</name>
+        <picklistValues>
+            <masterLabel>Autralia</masterLabel>
+            <translation><!-- Autralia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>India</masterLabel>
+            <translation><!-- India --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>USA</masterLabel>
+            <translation><!-- USA --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Criteria Logic Complete --></label>
+        <name>rrde__Criteria_Logic_Complete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Criteria Logic --></label>
+        <name>rrde__Criteria_Logic__c</name>
+    </fields>
+    <fields>
+        <help><!-- Account will be assigned to this user if maximum intake capacity exceeds or users are offline when only online users are to be assigned --></help>
+        <label><!-- Default Owner --></label>
+        <name>rrde__Default_Owner__c</name>
+        <relationshipLabel><!-- Step 2-Define Teams --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>rrde__Is_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Criteria Abbreviation --></label>
+        <name>rrde__Lead_Criteria_Abbreviation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Criteria --></label>
+        <name>rrde__Lead_Criteria__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Criteria if other State --></label>
+        <name>rrde__Lead_Criteria_if_other_State__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter the lead source from where the lead is captured --></help>
+        <label><!-- Lead Source --></label>
+        <name>rrde__Lead_Source__c</name>
+    </fields>
+    <fields>
+        <help><!-- Enter Zip Code --></help>
+        <label><!-- Lead Zip/Postal Code --></label>
+        <name>rrde__Lead_Zip_Postal_Code__c</name>
+    </fields>
+    <fields>
+        <help><!-- This value defines the maximum number of records a team can be assigned which is set to unlimited when left blank --></help>
+        <label><!-- Maximum Intake limit in current cycle --></label>
+        <name>rrde__Maximum_limit_in_current_cycle__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other State --></label>
+        <name>rrde__OtherState__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please enter any Number or Decimal Number to set the priority of this Team Criteria, To see existing order click on Criteria Priority Order Tab --></help>
+        <label><!-- Priority Order --></label>
+        <name>rrde__Priority_Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Queue Id --></label>
+        <name>rrde__Queue_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Queue Name --></label>
+        <name>rrde__Queue_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- Max number of record assign to a team. --></help>
+        <label><!-- Record assign Limit (Users limit Sum) --></label>
+        <name>rrde__Record_assign_Limit__c</name>
+    </fields>
+    <fields>
+        <label><!-- States/Territories --></label>
+        <name>rrde__States__c</name>
+        <picklistValues>
+            <masterLabel>Alabama-AL</masterLabel>
+            <translation><!-- Alabama-AL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Alaska-AK</masterLabel>
+            <translation><!-- Alaska-AK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>American Samoa-AS</masterLabel>
+            <translation><!-- American Samoa-AS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arizona-AZ</masterLabel>
+            <translation><!-- Arizona-AZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Arkansas-AR</masterLabel>
+            <translation><!-- Arkansas-AR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>California-CA</masterLabel>
+            <translation><!-- California-CA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Colorado-CO</masterLabel>
+            <translation><!-- Colorado-CO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Connecticut-CT</masterLabel>
+            <translation><!-- Connecticut-CT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Delaware-DE</masterLabel>
+            <translation><!-- Delaware-DE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>District of Columbia-DC</masterLabel>
+            <translation><!-- District of Columbia-DC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Florida-FL</masterLabel>
+            <translation><!-- Florida-FL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Georgia-GA</masterLabel>
+            <translation><!-- Georgia-GA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guam-GU</masterLabel>
+            <translation><!-- Guam-GU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hawaii-HI</masterLabel>
+            <translation><!-- Hawaii-HI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Idaho-ID</masterLabel>
+            <translation><!-- Idaho-ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Illinois-IL</masterLabel>
+            <translation><!-- Illinois-IL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indiana-IN</masterLabel>
+            <translation><!-- Indiana-IN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Iowa-LA</masterLabel>
+            <translation><!-- Iowa-LA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kansas-KS</masterLabel>
+            <translation><!-- Kansas-KS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kentucky-KY</masterLabel>
+            <translation><!-- Kentucky-KY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Louisiana-LA</masterLabel>
+            <translation><!-- Louisiana-LA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maine-ME</masterLabel>
+            <translation><!-- Maine-ME --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maryland-MD</masterLabel>
+            <translation><!-- Maryland-MD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Massachusetts-MA</masterLabel>
+            <translation><!-- Massachusetts-MA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Michigan-MI</masterLabel>
+            <translation><!-- Michigan-MI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Minnesota-MN</masterLabel>
+            <translation><!-- Minnesota-MN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mississippi-MS</masterLabel>
+            <translation><!-- Mississippi-MS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Missouri-MO</masterLabel>
+            <translation><!-- Missouri-MO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Montana-MT</masterLabel>
+            <translation><!-- Montana-MT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nebraska-NE</masterLabel>
+            <translation><!-- Nebraska-NE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nevada-NV</masterLabel>
+            <translation><!-- Nevada-NV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Hampshire-NH</masterLabel>
+            <translation><!-- New Hampshire-NH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Jersey-NJ</masterLabel>
+            <translation><!-- New Jersey-NJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Mexico-NM</masterLabel>
+            <translation><!-- New Mexico-NM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New York-NY</masterLabel>
+            <translation><!-- New York-NY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>North Carolina-NC</masterLabel>
+            <translation><!-- North Carolina-NC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>North Dakota-ND</masterLabel>
+            <translation><!-- North Dakota-ND --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Northern Mariana Islands-MP</masterLabel>
+            <translation><!-- Northern Mariana Islands-MP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ohio-OH</masterLabel>
+            <translation><!-- Ohio-OH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oklahoma-OK</masterLabel>
+            <translation><!-- Oklahoma-OK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oregon-OR</masterLabel>
+            <translation><!-- Oregon-OR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pennsylvania-PA</masterLabel>
+            <translation><!-- Pennsylvania-PA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Puerto Rico-PR</masterLabel>
+            <translation><!-- Puerto Rico-PR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rhode Island-RI</masterLabel>
+            <translation><!-- Rhode Island-RI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Carolina-SC</masterLabel>
+            <translation><!-- South Carolina-SC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Dakota-SD</masterLabel>
+            <translation><!-- South Dakota-SD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tennessee-TN</masterLabel>
+            <translation><!-- Tennessee-TN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Texas-TX</masterLabel>
+            <translation><!-- Texas-TX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>U.S. Virgin Islands-VI</masterLabel>
+            <translation><!-- U.S. Virgin Islands-VI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Utah-UT</masterLabel>
+            <translation><!-- Utah-UT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vermont-VT</masterLabel>
+            <translation><!-- Vermont-VT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virginia-VA</masterLabel>
+            <translation><!-- Virginia-VA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Washington-WA</masterLabel>
+            <translation><!-- Washington-WA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>West Virginia-WV</masterLabel>
+            <translation><!-- West Virginia-WV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wisconsin-WI</masterLabel>
+            <translation><!-- Wisconsin-WI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wyoming-WY</masterLabel>
+            <translation><!-- Wyoming-WY --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Define a unique team name --></help>
+        <label><!-- Team Name --></label>
+        <name>rrde__Team_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- To be assigned no of Records --></label>
+        <name>rrde__To_be_assigned_no_of_Records__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Assigned Cases --></label>
+        <name>rrde__Total_Assigned_Cases__c</name>
+    </fields>
+    <fields>
+        <help><!-- Users with maximum value --></help>
+        <label><!-- Total RR users with Intake value --></label>
+        <name>rrde__Total_RR_users_with_Max_value__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total RR user with out max value --></help>
+        <label><!-- Total RR users without Intake value --></label>
+        <name>rrde__Total_RR_users_without_Max_value__c</name>
+    </fields>
+    <fields>
+        <help><!-- Count the total number of users --></help>
+        <label><!-- Total number of RR users --></label>
+        <name>rrde__Total_number_of_users__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unique Criteria --></label>
+        <name>rrde__Unique_Criteria__c</name>
+    </fields>
+    <fields>
+        <label><!-- isNotRestricted --></label>
+        <name>rrde__isNotRestricted__c</name>
+    </fields>
+    <recordTypes>
+        <description><!-- Define team to set criteria for Accounts --></description>
+        <label><!-- Account Criteria --></label>
+        <name>rrde__Account_Criteria</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Define Team to set a Criteria for Case --></description>
+        <label><!-- Case Criteria --></label>
+        <name>rrde__Case_Criteria</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Define Team to set a Criteria for Lead --></description>
+        <label><!-- Lead Criteria --></label>
+        <name>rrde__Lead_Criteria</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This record type will be assigned for teams with queues. --></description>
+        <label><!-- Lead Queue --></label>
+        <name>rrde__Lead_Queue</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Define team to set criteria for Opportunities --></description>
+        <label><!-- Opportunity Criteria --></label>
+        <name>rrde__Opportunity_Criteria</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Other State is required if Country is other than USA,  if Country is USA, State is requried  and Other state should be blank. --></errorMessage>
+        <name>rrde__Country_State_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Priority order must be greater than 0 --></errorMessage>
+        <name>rrde__NoNegativeValues</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Record assign limit should be greater than 0 and the number of assigned records in the current cycle. --></errorMessage>
+        <name>rrde__Record_assign_limit</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Invalid Zip code --></errorMessage>
+        <name>rrde__Valid_Zip_Code</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Previous_Step --></label>
+        <name>rrde__Previous_Step</name>
+    </webLinks>
+</CustomObjectTranslation>

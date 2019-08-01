@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Mirketa</letterhead>
+    <name>Non decision maker FU</name>
+    <style>freeForm</style>
+    <subject>Hi {!Lead.Name}, checking in!</subject>
+    <textOnly>{!Lead.Name},
+
+It was great seeing you. I’d like to speak with someone in your organization about bringing Salesforce solutions to your business. Even if you already have Salesforce my goal is to help your business automate processes and make your job easier. I can do that for you, if you could provide me with the name and email for the CTO, IT director or just the person responsible for the decisions regarding CRM. If that person is you please let me know and I could send you our eBook on How to leverage Salesforce for Treatment Centers.
+
+
+I really appreciate your help in this matter. Looking forward to seeing you at the next function.
+
+
+Regards,
+
+
+Matt Falkner
+
+Mirketa Inc | Think. Build. Transform
+
+Phone: 772-932-1623
+
+matt.falkner@mirketa.com|</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

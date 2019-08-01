@@ -1,0 +1,544 @@
+<apex:page controller="rrde.TeamList_Controller" showHeader="true" sidebar="false"  docType="html-5.0" >
+    <apex:form id="frm">
+        <apex:actionStatus id="loadingStatus" style="align:center;">
+            <apex:facet name="start">
+                <div>
+                    <div class="popupBackground" />
+                    <div class="PopupPanel">
+                        <table>
+                            <tr>
+                                <td align="center"><img src="{!$Resource.Loading}" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </apex:facet>
+        </apex:actionStatus>
+        <style>
+            .popupBackground {
+                background-color: black;
+                opacity: 0.20;
+                filter: alpha(opacity=20);
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: 998;
+                position: absolute;
+                cursor: wait;
+            }
+            .PopupPanel {
+                left: 50%;
+                margin-left: -30px;
+                top: 50%;
+                margin-top: 50px;
+                z-index: 999;
+                position: fixed;
+                cursor: pointer;
+            }
+            .spin-background{
+                z-index: 9999;
+                background: black;
+                opacity: 0.6;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                left: 0;
+            }
+            .fontsize{
+                font-size: 12px;
+                line-height: 2;
+            }
+            label{ 
+                width: 200px; 
+                font-size: 12px;  
+                margin: 0 20px 0 0; 
+            }
+            .vfHelpText a{
+                position:relative;
+            }
+            .vfHelpText a span{
+                display: none;
+            }
+            .vfHelpText a:hover span{
+                display: block;
+                position:absolute;
+                top:1.25em;
+                padding:2px 5px;
+                right:-15em; width:15em;
+                z-index:100;
+                border:1px solid orange;
+                background-color:#FEFDB9;
+                color:black;
+            }
+            .help-txt{
+                text-align: center;
+                font-size: 12px;
+                font-weight: 600;
+                color: #2497c5;
+                background: #e6f0f3;
+            }
+            .pbSubheader{
+                background: #1797c0 !important;
+                font-size: 14px !important;
+            }
+            .firstDiv .apexp .bPageBlock.apexDefaultPageBlock .pbBody {
+                margin: 0;
+                background: #e6f0f3;
+            }
+            .panelclass{
+                font-size: 12px;
+                text-align: center;
+                font-weight: 600;
+                opacity: 0.6;
+                padding: 7px;
+            }
+            .disable{
+            	pointer-events: none;
+            }
+            .no-disable{
+            	pointer-events: all;
+            }
+            th{
+            	text-align:center;
+            }
+            td{
+           		text-align:center;
+            }
+        </style>
+        <script>
+       		function deleteUserJs(userid){
+                if(window.confirm("Do you want to delete?"))
+                	delOneUser(userid);
+            }
+			function deleteTeamJs(teamid){
+            	if(window.confirm("Do you want to delete?"))
+                	delOneTeam(teamid);  
+            }
+       		function hideshowhelptext() {
+                // Get the checkbox
+                var checkBox = document.getElementById("myCheck");
+  				// Get the output text
+        		var text = document.getElementById("text");
+                // If the checkbox is checked, display the output text
+                if (checkBox.checked == true){
+                	text.style.display = "block";
+  				}else{
+         			text.style.display = "none";
+  			    }
+			}
+           	function activationAlert(){
+                var activeCount="{!activeCount}";
+                if(parseInt(activeCount)>0){
+                    alert("Users Deactivated Successfully!");
+                }else{
+                    alert("Users Activated Successfully!");
+                }
+                // enableDisableActivation();
+            }
+       		function singleactivationAlert(){
+                var actFlag="{!singleUserActFlag}";
+                if(actFlag=="activation"){
+                    alert("User Activated Successfully!");
+                }else{
+                    alert("User Deactivated Successfully!");    
+                }
+                enableDisableActivation();
+            }
+        
+        function enterPressForUser(){
+        	var evt=window.event;    
+        	if(evt.keyCode==13){
+                /*
+                var optlist="{!listOfStrings}";
+                var enteredValue=evt.target.value;
+                var flag=0;
+                optlist=optlist.replace("[","");
+                optlist=optlist.replace("]","");
+                for(var o in optlist.split(",")){
+                	if(optlist.split(",")[o].trim()==enteredValue)
+                        flag++;
+                }
+                if(flag==0)
+                    alert("Invalid user!");
+                else */
+                updateUsersTable();
+                return false;    
+            }else{
+            	return true;    
+            }
+        }
+        function enterPressForTeam(){
+        	var evt=window.event;    
+        	if(evt.keyCode==13){
+            	updateTeamstable();
+                return false;    
+            }else{
+            	return true;    
+            }
+        }
+        function confirmDelUser(){
+        	if(window.confirm("Do you want to delete the selected users?"))
+            	deleteSelectedUsers();
+            return false;    
+        }
+        function confirmDelTeam(){
+        	if(window.confirm("Do you want to delete the selected users?"))
+            	deleteSelectedTeams();
+            return false;    
+        }
+        </script>
+        <apex:outputPanel rendered="{!showspinner}" styleClass="spin-background">
+			<img src="{!$Resource.rrde__Loading}" style="margin-left: 48%;margin-top: 14%;"/>
+        </apex:outputPanel>  
+        <!-- action functions -->
+        <apex:actionFunction action="{!deletesingleteam}" name="delOneTeam" reRender="frm"  status="loadingStatus" oncomplete="alert('Record Deleted Successfully!');enableDisableActivation();">
+        	<apex:param name="teamId" value=""/>
+        </apex:actionFunction>
+        <apex:actionFunction action="{!deletesingleuser}" name="delOneUser" reRender="frm" status="loadingStatus" oncomplete="alert('Record Deleted Successfully!');enableDisableActivation();">
+            <apex:param name="userId" value=""/>
+        </apex:actionFunction>
+        <!--  <apex:actionFunction action="{!deleteSelectedUsers}" name="delSelectUser" reRender="frm" status="loadingStatus"/> -->
+        <apex:actionFunction action="{!changeview}" name="changeview" reRender="frm" status="loadingStatus"/>
+        <apex:actionFunction action="{!updateteamstable}" name="updateTeamstable" reRender="frm" status="loadingStatus"/>
+        <apex:actionFunction action="{!updateUsersTable}" name="updateUsersTable" reRender="frm" status="loadingStatus"/>
+	    <apex:actionFunction action="{!checkallusers}" name="checkallusers" reRender="frm" status="loadingStatus" oncomplete="enableDisableActivation()"/> 
+        <apex:actionFunction action="{!checkallteams}" name="checkallteams" reRender="frm" status="loadingStatus" oncomplete="enableDisableActivation()"/>
+        <apex:actionFunction action="{!handleSingleUserActivation}" name="handleSingleUserActivation" reRender="frm" status="loadingStatus" oncomplete="singleactivationAlert()">
+            <apex:param name="rruId" value=""/>
+        </apex:actionFunction>
+        <apex:actionFunction action="{!enableDisableActivation}" name="enableDisableActivation" reRender="frm" status="loadingStatus"/>
+		<apex:actionFunction action="{!uncheck}" name="uncheck" reRender="frm" status="loadingStatus"/>
+        <apex:actionFunction action="{!deleteSelectedUsers}" name="deleteSelectedUsers" reRender="frm" oncomplete="alert('Membership removed successfully!')" status="loadingStatus"/>
+        <apex:actionFunction action="{!deleteSelectedTeams}" name="deleteSelectedTeams" reRender="frm" oncomplete="alert('Membership removed successfully!')" status="loadingStatus"/>
+        
+        <!-- radio buttons  -->
+     	<div class="firstDiv">
+            <apex:pageBlock >
+                <div style=" font-size: 15px;">
+                    <apex:pageBlockSection title="Bulk Management of Users and Teams" collapsible="false" >
+                    </apex:pageBlockSection>
+                </div>
+                <div class="help-txt">
+                    Bulk management allows you to perform record-level or bulk operations on Round Robin Users, for both users and teams. 
+                </div>
+                <apex:selectRadio value="{!selectedView}" onchange="changeview()" style="font-weight: bold;">
+                    <apex:selectOptions value="{!Panels}">
+                    </apex:selectOptions>
+                </apex:selectRadio> 
+            </apex:pageBlock>
+        </div>
+       
+        <!-- users section  -->
+        
+        <!--  user select list -->
+        <apex:pageBlock rendered="{!showuserlist}">
+        	<apex:pageBlockSection collapsible="false" >
+            	<apex:inputText label="Search By User:" style="width:56%" value="{!selectedUser}" list="{!listOfStrings}" onchange="updateUsersTable()" onkeypress="return enterPressForUser();"/>
+         	</apex:pageBlockSection>
+      	</apex:pageBlock>
+          
+        <!-- user table  -->
+      	<apex:pageBlock rendered="{!showSelectedUsers}">
+           	<br/>
+        	<div style=" font-size: 15px;">
+            	<apex:pageBlockSection columns="1"  title="List of Users"  collapsible="false" />
+               	<br/>
+         	</div>
+            <apex:pageBlockTable value="{!userWrapperList}" var="item" id="pbt">
+                <apex:column >
+                    
+                        <apex:facet name="header">
+                            <apex:inputCheckbox value="{!selectallusers}" onchange="checkallusers();" disabled="{!userWrapperList.size==0}">
+                            </apex:inputCheckbox>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!item.checked}" onchange="enableDisableActivation()" id="myCheck">  
+                            <a href="javascript:void(0)" onclick="hideshowhelptext" id="mycheck"></a>
+                        </apex:inputCheckbox>
+                    
+                </apex:column>
+                <apex:column value="{!item.user.Team__r.rrde__Team_Name__c}">
+                    <apex:facet name="header">
+                      	<apex:commandLink value="Team Name{!IF(sortingType='ASC','▲','▼')}" action="{!sortUserTable}" reRender="frm" styleClass="{!IF(userWrapperList.size==0,'disable','no-disable')}"/>
+                  	</apex:facet>
+              	</apex:column>
+               	<apex:column headerValue="Round Robin User"  value="{!item.user.rrde__Round_Robin_User_Name_text__c}" />
+             <!--   <apex:column headerValue="User Status">
+                  	<apex:outputLabel rendered="{!item.user.rrde__Is_Active__c==false}"><a href="javascript:void(0)" onclick="handleSingleUserActivation(this.id)" id="{!item.user.Id}">Activate</a></apex:outputLabel>
+                    <apex:outputLabel rendered="{!item.user.rrde__Is_Active__c}"><a href="javascript:void(0)" onclick="handleSingleUserActivation(this.id)" id="{!item.user.Id}">Deactivate</a></apex:outputLabel>
+                </apex:column> -->
+               	<apex:column headerValue="Total Number of Users"  value="{!item.user.Team__r.rrde__Total_number_of_users__c}" />
+               	<apex:column headerValue="To Be Assigned Number of Records" value="{!item.user.rrde__To_be_assigned_records__c}" />
+               	<apex:column headerValue="View User">
+                   	<apex:outputlink value="/{!item.user.Id}" target="_blank">View</apex:outputlink>
+               	</apex:column>
+               	<apex:column headerValue="Edit User">
+                   	<apex:outputlink value="/{!item.user.Id}/e?" target="_blank"	 >Edit</apex:outputlink>
+               	</apex:column>
+               	<apex:column headerValue="Delete User">
+                   	<a href="javascript:void(0)" onclick="deleteUserJs(this.id)" id="{!item.user.Id}">Delete</a>
+               	</apex:column>
+                 <apex:column headerValue="User Status">
+                  	<apex:outputLabel rendered="{!item.user.rrde__Is_Active__c==false}"><a href="javascript:void(0)" onclick="handleSingleUserActivation(this.id)" id="{!item.user.Id}">Activate</a></apex:outputLabel>
+                    <apex:outputLabel rendered="{!item.user.rrde__Is_Active__c}"><a href="javascript:void(0)" onclick="handleSingleUserActivation(this.id)" id="{!item.user.Id}">Deactivate</a></apex:outputLabel>
+                </apex:column>
+       		</apex:pageBlockTable>
+       		<apex:outputPanel rendered="{!userWrapperList.size==0}">
+       			<div class="panelclass">
+            		No records found
+           		</div> 
+          	</apex:outputPanel>
+          	<br/>
+          	<div style="text-align:center">
+            <!--	<apex:commandButton value="Delete Selected Users" disabled="{!disableDelBtn}"  action="{!deleteSelectedUsers}" style="margin-right: 10px;" status="loadingStatus" reRender="frm" oncomplete="alert('Membership Removed Successfully!')"/>  --> 
+              	<apex:commandButton onclick=" return confirmDelUser();" value="Delete Selected Users" disabled="{!disableDelBtn}" style="margin-right: 10px;"/>
+                <apex:commandButton action="{!ActivateSelectedUsers}" value="Activate/De-activate Users" oncomplete="activationAlert()" reRender="frm" status="loadingStatus" disabled="{!disableButtonVar}" />
+              	<body>
+                </body>
+              	<span id="text" class="vfHelpText">
+        			<apex:outputLink value="javascript:return false;" rendered="{!disableButtonVar}">
+         			<img src="/s.gif" alt="" class="helpOrb" />
+            		<span>Activate/De-activate Round Robin Users for a specific Salesforce user. You can either perform activation or deactivation at a time. This button will remain disabled if the user selection includes both active and inactive users or no users at all.</span>
+        			</apex:outputLink>
+    			</span>
+			</div>
+          	<br/>
+          	<apex:outputpanel layout="block" styleclass="listViewport">
+				<div class="bottomNav">
+                	<div class="paginator">
+                		<apex:panelgrid id="gridPaging" columns="3" width="100%" columnclasses="left, center, right">
+                    		<apex:panelgroup >
+                                <!--
+                                <span>
+                                    <apex:selectList value="{!PageSize}" size="1" onchange="updateUsersTable()" label="No of records">
+                                        <apex:selectOption itemValue="10" itemLabel="10"/>
+                                        <apex:selectOption itemValue="15" itemLabel="15"/>
+                                        <apex:selectOption itemValue="20" itemLabel="20"/>
+                                        <apex:selectOption itemValue="25" itemLabel="25"/>
+                                    </apex:selectList>
+                                </span>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+                        		<span class="selectorTarget">
+                            		<strong>{!LNumber}-{!UNumber} of {!RecordCount}</strong>
+                            	</span>
+                            	<span>  </span>
+                            	<span>
+                            		<strong>Total {!RecordCount} records</strong>
+                            	</span>
+                            	<span>  </span>
+                            	<apex:actionstatus id="statusPaging">
+                            		<apex:facet name="start">
+                                		<img src="/img/loading.gif" height="14px" width="14px" />
+                                	</apex:facet>
+                                	<apex:facet name="stop">
+                                		<img src="/img/s.gif" height="14px" width="14px" />
+                                	</apex:facet>
+                            	</apex:actionstatus>                                           
+                        	</apex:panelgroup>
+                        	<apex:panelgroup >
+                        		<span class="prevNextLinks">
+                            		<span class="prevNext">
+                                		<apex:commandlink id="linkMoveFirst" immediate="true" status="statusPaging" action="{!First}" rerender="frm" rendered="{!allowMovePrev}" oncomplete="uncheck()">
+                                    		<img src="/s.gif" title="First" alt="First" class="first" />
+                                    	</apex:commandlink>
+                                    	<apex:outputpanel layout="none" rendered="{!NOT(allowMovePrev)}">
+                                        	<apex:image url="/s.gif" title="First" alt="First" styleclass="firstoff"></apex:image>
+                                    	</apex:outputpanel>
+                                	</span>
+                                	<span class="prevNext">
+                                		<apex:commandlink id="linkMovePrev" immediate="true" title="Previous" status="statusPaging" action="{!Prev}" rerender="frm" rendered="{!allowMovePrev}" oncomplete="uncheck()">
+                                    		<img src="/s.gif" title="Previous" alt="Previous" class="prev"/>
+                                        	<span>Previous</span>
+                                    	</apex:commandlink>
+                                    	<apex:outputpanel layout="none" rendered="{!NOT(allowMovePrev)}">
+                                    		<apex:image url="/s.gif" title="Previous" alt="Previous" styleclass="prevoff"></apex:image>
+                                        	<span>Previous</span>
+                                    	</apex:outputpanel>
+                                	</span>
+                                	<span class="prevNext">
+                                    	<apex:commandlink id="linkMoveNext" immediate="true" title="Next" status="statusPaging" action="{!Next}" rerender="frm" rendered="{!allowMoveNext}" oncomplete="uncheck()">
+                                        	<span>Next</span>
+                                        	<img src="/s.gif" title="Next" alt="Next" class="next"/>
+                                    	</apex:commandlink>
+                              			<apex:outputpanel layout="none" rendered="{!NOT(allowMoveNext)}">
+                                    		<span>Next</span>
+                                        	<apex:image url="/s.gif" title="Next" alt="Next" styleclass="nextoff"></apex:image>
+                                    	</apex:outputpanel>
+                                	</span>
+                              		<span class="prevNext">
+                                		<apex:commandlink id="linkMoveLast" immediate="true" status="statusPaging" action="{!Last}" rerender="frm" rendered="{!allowMoveNext}" oncomplete="uncheck()">
+                                    		<img src="/s.gif" title="Last" alt="Last" class="last"/>
+                                    	</apex:commandlink>
+                                		<apex:outputpanel layout="none" rendered="{!NOT(allowMoveNext)}">
+                                    		<apex:image url="/s.gif" title="Last" alt="Last" styleclass="lastoff"></apex:image>
+                                    	</apex:outputpanel>
+                                	</span>
+                            	</span>
+                        	</apex:panelgroup>
+                    		<apex:panelgroup >
+                        		<span class="selectorTarget">
+                            		<strong> Page {!PageNumber} of {!PageCount}</strong>
+                            	</span>
+                        	</apex:panelgroup>
+                    	</apex:panelgrid> 
+                	</div>
+                </div>
+ 			</apex:outputpanel>                         
+        </apex:pageBlock>
+        
+        <!--  teams section -->
+       
+        <!-- team select list -->
+        <apex:pageBlock rendered="{!showteamlist}">
+         	<apex:pageBlockSection >
+            	<apex:inputText label="Search By Team:" style="width:56%" value="{!selectedTeam}" list="{!listOfStrings}" onchange="updateTeamstable()" onkeypress="return enterPressForTeam();"/>
+         	</apex:pageBlockSection>
+      	</apex:pageBlock> 
+        
+        <!-- teams table  -->
+        <apex:pageBlock rendered="{!showSelectedTeams}">
+          	<br/>
+          	<div style=" font-size: 15px;">
+                <apex:pageBlockSection columns="1" title="List of Teams" collapsible="false">
+                </apex:pageBlockSection>
+                <br/>
+          	</div>
+       		<apex:pageMessages >
+          	</apex:pageMessages>
+            <apex:pageBlockTable value="{!userWrapperList}" var="myitem">
+               	<apex:column >
+                  	<apex:facet name="header">
+                      	<apex:inputCheckbox value="{!selectallteams}" onchange="checkallteams()" disabled="{!userWrapperList.size==0}">
+                    	</apex:inputCheckbox>
+                  	</apex:facet>
+                  	<apex:inputCheckbox value="{!myitem.checked}" onchange="enableDisableActivation()">
+                   	</apex:inputCheckbox>
+               	</apex:column>
+              	<apex:column headerValue="Team Name" value="{!myitem.user.Team__r.rrde__Team_Name__c}" />
+                <apex:column value="{!myitem.user.rrde__Round_Robin_User_Name_text__c}">
+                	<apex:facet name="header">
+                    	<apex:commandLink value="Round Robin User{!IF(sortingType='ASC','▲','▼')}" action="{!sortTeamTable}" reRender="frm" styleClass="{!IF(userWrapperList.size==0,'disable','no-disable')}"/>
+                    </apex:facet>
+                </apex:column>
+             <!--   <apex:column headerValue="User Status">
+                    <apex:outputLabel rendered="{!myitem.user.rrde__Is_Active__c==false}"><a href="javascript:void(0)" onclick="handleSingleUserActivation(this.id)" id="{!myitem.user.Id}">Activate</a></apex:outputLabel>
+                    <apex:outputLabel rendered="{!myitem.user.rrde__Is_Active__c}"><a href="javascript:void(0)" onclick="handleSingleUserActivation(this.id)" id="{!myitem.user.Id}">Deactivate</a></apex:outputLabel>
+                </apex:column> -->
+            <!--    <apex:column headerValue="To Be Assigned Number of Records" value="{!myitem.user.To_be_assigned_records__c}"/> -->
+                <apex:column headerValue="Record Type" value="{!myitem.user.team__r.RecordTypeId}" />
+               	<apex:column headerValue="View User">
+                 	<apex:outputlink value="/{!myitem.user.Id}" target="_blank">View</apex:outputlink>
+               	</apex:column>
+               	<apex:column headerValue="Edit User">
+                  	<apex:outputlink value="/{!myitem.user.Id}/e?" target="_blank">Edit</apex:outputlink>
+               	</apex:column>
+               	<apex:column headerValue="Delete User">
+                  	<a href="javascript:void(0)" onclick="deleteTeamJs(this.id)" id="{!myitem.user.Id}">Delete</a>
+               	</apex:column>
+                 <apex:column headerValue="User Status">
+                    <apex:outputLabel rendered="{!myitem.user.rrde__Is_Active__c==false}"><a href="javascript:void(0)" onclick="handleSingleUserActivation(this.id)" id="{!myitem.user.Id}">Activate</a></apex:outputLabel>
+                    <apex:outputLabel rendered="{!myitem.user.rrde__Is_Active__c}"><a href="javascript:void(0)" onclick="handleSingleUserActivation(this.id)" id="{!myitem.user.Id}">Deactivate</a></apex:outputLabel>
+                </apex:column>
+           	</apex:pageBlockTable>
+            <apex:outputPanel rendered="{!userWrapperList.size==0}">
+       			<div class="panelclass">
+            		No records found
+           		</div> 
+          	</apex:outputPanel>
+          	<br/>
+          	<div style="text-align:center">
+            	<!--<apex:commandButton value="Delete Users From Team" disabled="{!disableDelBtn}" action="{!deleteSelectedTeams}" reRender="frm" oncomplete="alert('Membership removed successfully!')" status="loadingStatus"/>  -->
+              	<apex:commandButton onclick="return confirmDelTeam();" value="Delete Users From Team" disabled="{!disableDelBtn}"/>
+                <apex:commandButton action="{!ActivateSelectedTeams}" disabled="{!disableButtonVar}" id="textInput" oncomplete="activationAlert()" value="Activate/Deactivate Users from Team" reRender="frm" status="loadingStatus" />
+         		<span class="vfHelpText">
+        			<apex:outputLink value="javascript:return false;" rendered="{!disableButtonVar}">
+         				<img src="/s.gif" alt="" class="helpOrb" />
+            			<span>Activate/De-activate Round Robin Users present in a specific team. You can either perform activation or deactivation at a time. This button will remain disabled if the user selection includes both active and inactive users or no users at all.</span>
+        			</apex:outputLink>
+              	</span>
+            </div>
+          	<br/>
+        	<apex:outputpanel layout="block" styleclass="listViewport">
+				<div class="bottomNav">
+                	<div class="paginator">
+                		<apex:panelgrid id="gridPaging" columns="3" width="100%" columnclasses="left, center, right">
+                    		<apex:panelgroup >
+                                <!--
+                                <span>
+                                    <apex:selectList value="{!PageSize}" size="1" onchange="updateTeamstable()" label="No of records">
+                                        <apex:selectOption itemValue="10" itemLabel="10"/>
+                                        <apex:selectOption itemValue="15" itemLabel="15"/>
+                                        <apex:selectOption itemValue="20" itemLabel="20"/>
+                                        <apex:selectOption itemValue="25" itemLabel="25"/>
+                                    </apex:selectList>
+                                </span>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  -->
+                            	<span class="selectorTarget">
+                            		<strong>{!LNumber}-{!UNumber} of {!RecordCount}</strong>
+                            	</span>
+                            	<span>  </span>
+                            	<span>
+                            		<strong>Total {!RecordCount} records</strong>
+                            	</span>
+                            	<span>  </span>
+                            	<apex:actionstatus id="statusPaging">
+                            		<apex:facet name="start">
+                                		<img src="/img/loading.gif" height="14px" width="14px" />
+                                	</apex:facet>
+                                	<apex:facet name="stop">
+                                		<img src="/img/s.gif" height="14px" width="14px" />
+                                	</apex:facet>
+                            	</apex:actionstatus>                                           
+                        	</apex:panelgroup>
+                        	<apex:panelgroup >
+                        		<span class="prevNextLinks">
+                            		<span class="prevNext">
+                                		<apex:commandlink id="linkMoveFirst" immediate="true" status="statusPaging" action="{!First}" rerender="frm" rendered="{!allowMovePrev}" oncomplete="uncheck()">
+                                    		<img src="/s.gif" title="First" alt="First" class="first" />
+                                    	</apex:commandlink>
+                                    	<apex:outputpanel layout="none" rendered="{!NOT(allowMovePrev)}">
+                                        	<apex:image url="/s.gif" title="First" alt="First" styleclass="firstoff"></apex:image>
+                                    	</apex:outputpanel>
+                                	</span>
+                                	<span class="prevNext">
+                                		<apex:commandlink id="linkMovePrev" immediate="true" title="Previous" status="statusPaging" action="{!Prev}" rerender="frm" rendered="{!allowMovePrev}" oncomplete="uncheck()">
+                                    		<img src="/s.gif" title="Previous" alt="Previous" class="prev"/>
+                                        	<span>Previous</span>
+                                    	</apex:commandlink>
+                                    	<apex:outputpanel layout="none" rendered="{!NOT(allowMovePrev)}">
+                                    		<apex:image url="/s.gif" title="Previous" alt="Previous" styleclass="prevoff"></apex:image>
+                                        	<span>Previous</span>
+                                    	</apex:outputpanel>
+                                	</span>
+                                	<span class="prevNext">
+                                    	<apex:commandlink id="linkMoveNext" immediate="true" title="Next" status="statusPaging" action="{!Next}" rerender="frm" rendered="{!allowMoveNext}" oncomplete="uncheck()">
+                                        	<span>Next</span>
+                                        	<img src="/s.gif" title="Next" alt="Next" class="next"/>
+                                    	</apex:commandlink>
+                              			<apex:outputpanel layout="none" rendered="{!NOT(allowMoveNext)}">
+                                    		<span>Next</span>
+                                        	<apex:image url="/s.gif" title="Next" alt="Next" styleclass="nextoff"></apex:image>
+                                    	</apex:outputpanel>
+                                	</span>
+                              		<span class="prevNext">
+                                		<apex:commandlink id="linkMoveLast" immediate="true" status="statusPaging" action="{!Last}" rerender="frm" rendered="{!allowMoveNext}" oncomplete="uncheck()">
+                                    		<img src="/s.gif" title="Last" alt="Last" class="last"/>
+                                    	</apex:commandlink>
+                                		<apex:outputpanel layout="none" rendered="{!NOT(allowMoveNext)}">
+                                            <apex:image url="/s.gif" title="Last" alt="Last" styleclass="lastoff"></apex:image>
+                                        </apex:outputpanel>
+                                	</span>
+                            	</span>
+                        	</apex:panelgroup>
+                    		<apex:panelgroup >
+                        		<span class="selectorTarget">
+                            		<strong> Page {!PageNumber} of {!PageCount}</strong>
+                            	</span>
+                        	</apex:panelgroup>
+                    	</apex:panelgrid> 
+                	</div>
+                </div>
+ 			</apex:outputpanel>     
+        </apex:pageBlock>
+	</apex:form>
+</apex:page>

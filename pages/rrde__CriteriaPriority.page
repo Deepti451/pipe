@@ -1,0 +1,99 @@
+<apex:page controller="rrde.PriorityOrder">
+<style>
+h1 { 
+    display: block;
+    font-size: 1.5em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+</style>
+
+<html>
+  <body>
+    <h1>Criteria Priority</h1>
+  </body>
+</html>
+<apex:form >
+
+<apex:tabPanel id="tabpanel" >
+    <apex:tab name="Lead Criteria" label="Lead Criteria" id="Lead">
+     <apex:pageblock >
+      <apex:pageBlockSection columns="1" >
+        <apex:pageblockTable value="{!leadcriteria}" var="lp" id="leadtable" >
+          <apex:column headerValue="Name"><apex:outputField value="{!lp.Name}" /></apex:column>
+          <apex:column headerValue="Owner"><apex:outputField value="{!lp.Owner.Name}" /></apex:column>
+          <apex:column headerValue="Priority Order"><apex:outputField value="{!lp.rrde__Priority_Order__c}"/></apex:column>
+          <apex:column headerValue="Team Name"><apex:outputField value="{!lp.rrde__Team_Name__c}"/></apex:column>
+          <apex:column headerValue="Maximum Limit in current cycle"><apex:outputField value="{!lp.rrde__Maximum_limit_in_current_cycle__c}"/></apex:column>
+          <apex:column headerValue="Is Active"><apex:outputField value="{!lp.rrde__Is_Active__c}"/></apex:column>
+        </apex:pageblockTable>
+      </apex:pageBlockSection>
+     </apex:pageblock>
+    </apex:tab>
+
+<apex:tab name="Case Criteria" label="Case Criteria" id="Case">
+   <apex:pageblock >
+    <apex:pageBlockSection columns="1">
+     <apex:pageBlockTable value="{!casecriteria}" var="cp" id="casetable">
+      <apex:column headerValue="Name"><apex:outputField value="{!cp.Name}" /></apex:column>
+      <apex:column headerValue="Owner"><apex:outputField value="{!cp.Owner.Name}" /></apex:column>
+      <apex:column headerValue="Team Name"><apex:outputField value="{!cp.rrde__Team_Name__c}"/></apex:column>
+      <apex:column headerValue="Priority Order"><apex:outputField value="{!cp.rrde__Priority_Order__c}"/></apex:column>
+      <apex:column headerValue="Maximum Limit in current cycle"><apex:outputField value="{!cp.rrde__Maximum_limit_in_current_cycle__c}"/></apex:column>
+      <apex:column headerValue="Is Active"><apex:outputField value="{!cp.rrde__Is_Active__c}"/></apex:column>
+    </apex:pageBlockTable>
+   </apex:pageBlockSection>
+  </apex:pageblock>
+ </apex:tab>
+ 
+ <apex:tab name="Lead Queue" label="Lead Queue" id="Queue">
+   <apex:pageblock >
+    <apex:pageBlockSection columns="1">
+     <apex:pageBlockTable value="{!queuecriteria}" var="cp" id="queuetable">
+      <apex:column headerValue="Name"><apex:outputField value="{!cp.Name}" /></apex:column>
+      <apex:column headerValue="Owner"><apex:outputField value="{!cp.Owner.Name}" /></apex:column>
+      <apex:column headerValue="Team Name"><apex:outputField value="{!cp.rrde__Team_Name__c}"/></apex:column>
+      <apex:column headerValue="Priority Order"><apex:outputField value="{!cp.rrde__Priority_Order__c}"/></apex:column>
+      <apex:column headerValue="Maximum Limit in current cycle"><apex:outputField value="{!cp.rrde__Maximum_limit_in_current_cycle__c}"/></apex:column>
+      <apex:column headerValue="Is Active"><apex:outputField value="{!cp.rrde__Is_Active__c}"/></apex:column>
+    </apex:pageBlockTable>
+   </apex:pageBlockSection>
+  </apex:pageblock>
+ </apex:tab>
+ 
+ <apex:tab name="Account Criteria" label="Account Criteria" id="Account">
+   <apex:pageblock >
+    <apex:pageBlockSection columns="1">
+     <apex:pageBlockTable value="{!accountcriteria}" var="cp" id="acctable">
+      <apex:column headerValue="Name"><apex:outputField value="{!cp.Name}" /></apex:column>
+      <apex:column headerValue="Owner"><apex:outputField value="{!cp.Owner.Name}" /></apex:column>
+      <apex:column headerValue="Team Name"><apex:outputField value="{!cp.rrde__Team_Name__c}"/></apex:column>
+      <apex:column headerValue="Priority Order"><apex:outputField value="{!cp.rrde__Priority_Order__c}"/></apex:column>
+      <apex:column headerValue="Maximum Limit in current cycle"><apex:outputField value="{!cp.rrde__Maximum_limit_in_current_cycle__c}"/></apex:column>
+      <apex:column headerValue="Is Active"><apex:outputField value="{!cp.rrde__Is_Active__c}"/></apex:column>
+    </apex:pageBlockTable>
+   </apex:pageBlockSection>
+  </apex:pageblock>
+ </apex:tab>
+ 
+ <apex:tab name="Opportunity Criteria" label="Opportunity Criteria" id="Opportunity">
+   <apex:pageblock >
+    <apex:pageBlockSection columns="1">
+     <apex:pageBlockTable value="{!opportunitycriteria}" var="cp" id="opptable">
+      <apex:column headerValue="Name"><apex:outputField value="{!cp.Name}" /></apex:column>
+      <apex:column headerValue="Owner"><apex:outputField value="{!cp.Owner.Name}" /></apex:column>
+      <apex:column headerValue="Team Name"><apex:outputField value="{!cp.rrde__Team_Name__c}"/></apex:column>
+      <apex:column headerValue="Priority Order"><apex:outputField value="{!cp.rrde__Priority_Order__c}"/></apex:column>
+      <apex:column headerValue="Maximum Limit in current cycle"><apex:outputField value="{!cp.rrde__Maximum_limit_in_current_cycle__c}"/></apex:column>
+      <apex:column headerValue="Is Active"><apex:outputField value="{!cp.rrde__Is_Active__c}"/></apex:column>
+    </apex:pageBlockTable>
+   </apex:pageBlockSection>
+  </apex:pageblock>
+ </apex:tab>
+</apex:tabPanel>
+
+ </apex:form>
+</apex:page>

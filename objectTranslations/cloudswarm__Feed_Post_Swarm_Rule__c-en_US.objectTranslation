@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Description --></label>
+        <name>cloudswarm__Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Follow or Unfollow? --></label>
+        <name>cloudswarm__Follow_or_Unfollow__c</name>
+        <picklistValues>
+            <masterLabel>Follow</masterLabel>
+            <translation><!-- Follow --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unfollow</masterLabel>
+            <translation><!-- Unfollow --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Notify on Swarm? --></label>
+        <name>cloudswarm__Notify_on_Swarm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Trigger Text --></label>
+        <name>cloudswarm__Trigger_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>cloudswarm__User__c</name>
+        <relationshipLabel><!-- Feed Post Swarm Rules --></relationshipLabel>
+    </fields>
+</CustomObjectTranslation>

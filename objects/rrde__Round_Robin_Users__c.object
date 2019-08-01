@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Round Robin users associated with users and Team</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>rrde__Allowed_Number_of_Open_Cases__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <inlineHelpText>There will be no limit to the number of open cases at any point of time is case no value for this field has been specified</inlineHelpText>
+        <label>Allowed Number of Open Cases</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__Assigned_records_current_cycle__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Assigned records current cycle.</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__Assigned_records_current_cycle_front__c</fullName>
+        <deprecated>false</deprecated>
+        <description>To display record assign limit at the page layout in read only form.</description>
+        <externalId>false</externalId>
+        <formula>rrde__Assigned_records_current_cycle__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Assigned records current cycle</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__Case_Criteria__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>rrde__Team__r.rrde__Case_Criteria__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Case Criteria</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__Complete_Target__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This Check box is use to check weather the user have assign the record up to their defined limit.
+(Gul)</description>
+        <externalId>false</externalId>
+        <formula>rrde__Assigned_records_current_cycle__c =  rrde__Record_assign_limit__c</formula>
+        <label>Complete Target</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>rrde__Is_Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Is Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>rrde__Is_Ready_to_Assign__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>rrde__Is_Active__c  &amp;&amp;  rrde__Is_Team_Active__c  &amp;&amp;  NOT(rrde__Complete_Target__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Ready to Assign?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>rrde__Is_Team_Active__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>rrde__Team__r.rrde__Is_Active__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Team Active?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>rrde__Last_Case_Assigned_Date_time__c</fullName>
+        <defaultValue>Now()</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Track when was last datetime when case was assigned to this user, Set it first time current time, when you are creating this first time.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Track when was last datetime when case was assigned to this user, Set it first time current time, when you are creating this first time.</inlineHelpText>
+        <label>Last Case Assigned Date time</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>rrde__Last_account_assigned_Date_Time__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Last account assigned Date Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>rrde__Last_lead_assigned_Date_Time__c</fullName>
+        <defaultValue>Now()</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Track when was last datetime when lead was assigned to this user, Set it first time current time, when you are creating this first time.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Track when was last datetime when lead was assigned to this user, Set it first time current time, when you are creating this first time.</inlineHelpText>
+        <label>Last lead assigned Date Time</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>rrde__Last_opp_assigned_date_time__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Last opp assigned date time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>rrde__Lead_Criteria__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>rrde__Team__r.rrde__Lead_Criteria__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Lead Criteria</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__Previous_Assignment_Date_TimeView__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>rrde__Previous_Assignment_Datetime__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Previous Assignment Date/Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>rrde__Previous_Assignment_Datetime__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Track the old assignment Date time of user.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Track the old assignment Date time of user.</inlineHelpText>
+        <label>Previous Assignment Datetime</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>rrde__Queue_Id__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>rrde__Team__r.rrde__Queue_Id__c</formula>
+        <label>Queue Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__Record_assign_limit__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This value defines the maximum number of records a user can be assigned which is set to unlimited when left blank</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This value defines the maximum number of records a user can be assigned which is set to unlimited when left blank</inlineHelpText>
+        <label>Record assign limit</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__Round_Robin_User_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Select the User from Lookup to add in Round Robin User List</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the User from Lookup to add in Round Robin User List</inlineHelpText>
+        <label>Round Robin User Name</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Round_Robin_Users_del</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>rrde__Round_Robin_User_Name_text__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Added to display the user name in text format and not ID so it is not clickable</description>
+        <externalId>false</externalId>
+        <formula>if( rrde__Round_Robin_User_Name__c!=null, 
+rrde__Round_Robin_User_Name__r.FirstName +&apos; &apos;+ rrde__Round_Robin_User_Name__r.LastName,
+ rrde__Team__r.rrde__Queue_Name__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>RRD User Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__Team__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Team</label>
+        <referenceTo>rrde__RRD_Teams__c</referenceTo>
+        <relationshipLabel>Round Robin Users</relationshipLabel>
+        <relationshipName>Round_Robin_Users</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>rrde__Team_s_Record_Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Capture the name of the team record type.</description>
+        <externalId>false</externalId>
+        <formula>rrde__Team__r.RecordType.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Team&apos;s Record Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__To_be_assigned_records__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>IF( isblank(rrde__Allowed_Number_of_Open_Cases__c) , 
+rrde__Record_assign_limit__c - rrde__Assigned_records_current_cycle_front__c, 
+
+IF((rrde__Allowed_Number_of_Open_Cases__c - rrde__Total_Assigned_Cases__c )&gt;= 
+(rrde__Record_assign_limit__c - rrde__Assigned_records_current_cycle__c), 
+rrde__Record_assign_limit__c - rrde__Assigned_records_current_cycle__c, 
+rrde__Allowed_Number_of_Open_Cases__c - rrde__Total_Assigned_Cases__c 
+)
+)</formula>
+        <label>To be assigned records</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__Total_Assigned_Cases__c</fullName>
+        <defaultValue>0</defaultValue>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Total Open Cases</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__Total_Assigned_Cases_f__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <formula>rrde__Total_Assigned_Cases__c</formula>
+        <label>Total Assigned Cases - Open</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>rrde__isNotRestricted__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Checks if the user is ready for assignment</description>
+        <externalId>false</externalId>
+        <formula>IF(ISBLANK( rrde__Allowed_Number_of_Open_Cases__c), true, 
+
+IF( rrde__Allowed_Number_of_Open_Cases__c &gt;  rrde__Total_Assigned_Cases__c , true, false)
+)</formula>
+        <label>isNotRestricted</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Round Robin User</label>
+    <nameField>
+        <displayFormat>RRU-{0000}</displayFormat>
+        <label>Round Robin User Code</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Round Robin Users</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>rrde__Team__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>rrde__Team_s_Record_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>rrde__Is_Active__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>rrde__Is_Team_Active__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>rrde__Is_Ready_to_Assign__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>rrde__Team__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>rrde__Team_s_Record_Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>rrde__Is_Active__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>rrde__Is_Team_Active__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>rrde__Is_Ready_to_Assign__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>rrde__Team__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>rrde__Team_s_Record_Type__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>rrde__Is_Active__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>rrde__Is_Team_Active__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>rrde__Is_Ready_to_Assign__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>NAME</searchFilterFields>
+        <searchFilterFields>rrde__Team__c</searchFilterFields>
+        <searchFilterFields>rrde__Team_s_Record_Type__c</searchFilterFields>
+        <searchFilterFields>rrde__Is_Active__c</searchFilterFields>
+        <searchFilterFields>rrde__Is_Team_Active__c</searchFilterFields>
+        <searchFilterFields>rrde__Is_Ready_to_Assign__c</searchFilterFields>
+        <searchResultsAdditionalFields>rrde__Team__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>rrde__Team_s_Record_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>rrde__Is_Active__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>rrde__Is_Team_Active__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>rrde__Is_Ready_to_Assign__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>rrde__Record_assign_limit</fullName>
+        <active>true</active>
+        <errorConditionFormula>rrde__Record_assign_limit__c == 0  ||  rrde__Record_assign_limit__c &lt; rrde__Assigned_records_current_cycle__c ||
+ rrde__Allowed_Number_of_Open_Cases__c &lt;
+ rrde__Total_Assigned_Cases_f__c</errorConditionFormula>
+        <errorDisplayField>rrde__Record_assign_limit__c</errorDisplayField>
+        <errorMessage>Record assign limit should be greater than 0 and the number of assigned records in current cycle on Round Robin User.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>rrde__User_Name_Required</fullName>
+        <active>true</active>
+        <errorConditionFormula>(rrde__Round_Robin_User_Name__c == null &amp;&amp; 
+(rrde__Team__r.RecordType.Name ==&apos;Lead Criteria&apos; || rrde__Team__r.RecordType.Name ==&apos;Case Criteria&apos;))</errorConditionFormula>
+        <errorDisplayField>rrde__Round_Robin_User_Name__c</errorDisplayField>
+        <errorMessage>Please select Round Robin User</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>rrde__Add_Queue</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add Queue</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>window.open(&quot;/apex/rrde__SelectQueue?parentId={!rrde__RRD_Teams__c.Id}&quot;);</url>
+    </webLinks>
+</CustomObject>

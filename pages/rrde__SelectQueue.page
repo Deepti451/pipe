@@ -1,0 +1,24 @@
+<apex:page controller="rrde.QueueSelection">
+           <apex:pagemessages ></apex:pagemessages>
+    <apex:form >
+        <apex:pageBlock title="Queue Edit" rendered="{!showForm}">
+           <apex:pageBlockSection title="Queue Criteria" collapsible="false">
+               <apex:pageBlockSectionItem >
+                   <apex:outputLabel >Priority Order:</apex:outputLabel>
+                   <apex:outputField value="{!rrt.rrde__Priority_Order__c}" /> 
+               </apex:pageBlockSectionItem>
+               <apex:pageBlockSectionItem > 
+                   <apex:outputLabel >Select Queue:</apex:outputLabel>             
+                   <apex:selectList value="{!value}" size="1">
+                   <apex:selectOptions value="{!options}"/>
+                   </apex:selectList>  
+               </apex:pageBlockSectionItem>
+               <apex:outputField value="{!rrt.rrde__Queue_Name__c}"/>                          
+           </apex:pageBlockSection> 
+           <apex:pageBlockButtons location="Bottom">
+           <apex:commandButton action="{!save}" value="Save"/> 
+           <apex:commandButton action="{!cncl}" value="Cancel" immediate="true"/>
+           </apex:pageBlockButtons>      
+        </apex:pageBlock>                
+    </apex:form>
+</apex:page>

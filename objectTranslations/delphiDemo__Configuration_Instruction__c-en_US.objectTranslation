@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Machine Pages Visible --></label>
+        <name>delphiDemo__Machine_Pages_Visible__c</name>
+    </fields>
+    <fields>
+        <label><!-- Visible Page --></label>
+        <name>delphiDemo__Visible_Page__c</name>
+    </fields>
+</CustomObjectTranslation>

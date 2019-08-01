@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Mirketa</letterhead>
+    <name>App demo requst</name>
+    <style>freeForm</style>
+    <subject>Exciting new app for your Treatment Center</subject>
+    <textOnly>Hi {!Lead.FirstName},
+
+We&apos;re proud to be rolling out a treatment center app which is compatible with Salesforce. We are getting close to having the demo product ready and would love the chance to show it off. I&apos;m reaching out to see if you have any interest in the roll out so I can set up time to demo the product to you. It will feature...
+
+Availability projections- you will know exactly how many beds available and on what date
+Sober living collections tools- Know who is paid on rent and what the balance may be.
+Client fund tools- No more fumbling receipts and carrying around clients credit cards or cash.
+Alumni surveys- Call logs generated from app using predictive model based on risk factors from survey.
+
+We are also a Full Service Salesforce Partner. Let me know I could send an eBook explaining our services for treatment centers.
+
+Regards,
+
+
+Matt Falkner
+Mirketa Inc | Think. Build. Transform
+Phone: 772-932-1623
+matt.falkner@mirketa.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

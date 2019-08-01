@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Duration --></label>
+        <name>delphiDemo__Duration__c</name>
+    </fields>
+    <fields>
+        <label><!-- OpportunityId --></label>
+        <name>delphiDemo__OpportunityId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage Name --></label>
+        <name>delphiDemo__Stage_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- stageDate --></label>
+        <name>delphiDemo__stageDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- timePeriodFlow --></label>
+        <name>delphiDemo__timePeriodFlow__c</name>
+    </fields>
+</CustomObjectTranslation>

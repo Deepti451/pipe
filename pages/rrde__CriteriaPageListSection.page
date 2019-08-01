@@ -1,0 +1,257 @@
+<apex:page standardController="rrde__RRD_Teams__c" showHeader="false" extensions="rrde.CriteriaList"> 
+    <script type="text/javascript">
+    /*************JAVASCRIPT FOR PAGE RERENDER***************/
+    function RefreshPrimaryTab(id){
+        window.top.location.href = '/' + id;
+    }
+    /*-----------------RRD-252 Start-------------------------*/
+    window.onload = function(){
+        document.getElementById("j_id0:criteriaForm:pg:customFilterLogic").disabled = true;
+        document.getElementById("j_id0:criteriaForm:pg:submitCustomLogic").disabled = true;
+        var existingLogic = "{!customLogic}";
+        if(localStorage["criteriaLogic"]!=null && existingLogic.length==0){
+            document.getElementById("j_id0:criteriaForm:pg:submitCustomLogic").disabled = false;
+            document.getElementById("j_id0:criteriaForm:pg:customFilterLogic").disabled = false;
+            document.getElementById("j_id0:criteriaForm:pg:customFilterLogic").value = localStorage["criteriaLogic"];
+        }
+        else{
+            if(localStorage["criteriaLogic"]!=null){
+                localStorage.removeItem("criteriaLogic");
+            }
+        }
+    }
+    function toggleVisibility(){
+        document.getElementById("j_id0:criteriaForm:pg:customFilterLogic").disabled = false;
+        document.getElementById("j_id0:criteriaForm:pg:submitCustomLogic").disabled = false;
+    }
+    function checkInput(){
+        
+        var logic = document.getElementById("j_id0:criteriaForm:pg:customFilterLogic").value;
+        if(Number("{!count}") <= 1 && logic.length>0){
+            alert("Add atleast two criterias to define criteria logic.");
+            return false;
+        }
+        var is_logic_valid = checkLogicValidity(logic);
+        if(is_logic_valid == true){
+            if(localStorage["criteriaLogic"]!=null){
+                localStorage.removeItem("criteriaLogic");
+            }
+            if(logic.length>0){
+                if(window.confirm('Are you sure?')) 
+                    saveCustomLogic();
+            }
+            else{
+                alert("You have not defined any custom criteria logic. All criterias will be considered \"AND\" by default.");
+                saveCustomLogic();
+            }
+        }
+        else{
+            localStorage["criteriaLogic"] = logic;
+            alert("Invalid Criteria Logic!");
+        }
+    }
+    function checkLogicValidity(logic){
+        //Remove all spaces from the expression before further processing
+        logic = logic.replace(/ /g,"");
+        var logic_copy = logic;
+        var upperLimit = "{!count}";
+        //Return true if the string is empty - VALID STRING
+        if(logic_copy.length==0){
+            //alert("zero length stirng - ACCEPTED");
+            return true;
+        }
+        //Return false if the string only contains numbers - INVALID STRING
+        /*if(Number(logic_copy)>=0){
+            alert("Only Numbers - REJECTED");
+            return false;
+        }*/
+        
+        //Return False if the expression contains only number and no operators
+        if(!(logic_copy.includes("AND") || logic_copy.includes("OR"))){
+            //alert("Only Numbers and brackets - REJECTED");
+            return false;
+        }
+        
+        //Replace AND and OR with & and | respectively for easy processing
+        logic_copy = logic_copy.replace(/AND/g,"&").replace(/OR/g,"|");
+        
+        //Return false if any of the following is not true
+        //1. Before an operand there can either be nothing (starting of the string) or an operator (AND/OR) or an opening bracket.
+        //2. Before an opening bracket there can either be nothing (starting of the string) or an operator (AND/OR) or another opening bracket.
+        //3. Before an operator(AND/OR) there can either be an operand or a closing bracket
+        //4. Before a closing bracket there can either be another closing bracket or an operand
+        for(var i=0 ; i<logic_copy.length; i++){
+            //Case 1 & 2 merged:-
+            if(Number(logic_copy.charAt(i))>0 || logic_copy.charAt(i) == "("){
+                var flag = false;
+                if(i==0){//checking starting of the string
+                    flag = true;
+                }
+                else{
+                    if(logic_copy.charAt(i-1) == "&" || logic_copy.charAt(i-1) == "|" || logic_copy.charAt(i-1) == "("){//if there is an operator or an opening bracket
+                        flag = true;
+                    }
+                }
+                if(!flag){
+                    //alert("Invalid string as per Case 1 or 2");
+                    return false;
+                }
+            }
+            
+            //Case 3 & 4 merged:-
+            if(logic_copy.charAt(i) == "&" || logic_copy.charAt(i) == "|" || logic_copy.charAt(i) == ")"){
+                var flag = false;
+                if(logic_copy.charAt(i-1) == ")" || Number(logic_copy.charAt(i-1))>0){//if there is an operator or an opening bracket
+                    flag = true;
+                }
+                if(!flag){
+                    //alert("Invalid string as per Case 3 or 4");
+                    return false;
+                }
+            }
+        }
+        
+        
+        
+        //Return false if the string doesn't starts with number or ( and doesn't end with number or )- INVALID STRING
+        //var regularExp = "^([1-"+upperLimit+"]|\().*([1-"+upperLimit+"]|\)$)";
+        //var matchString = logic_copy.match(new RegExp(regularExp));
+        //console.log(matchString);
+        if((Number(logic_copy.charAt(0))>0 || logic_copy.charAt(0) == "(") && 
+           (Number(logic_copy.charAt(logic_copy.length-1))>0 || logic_copy.charAt(logic_copy.length-1) == ")")){
+            
+        }
+        else{
+            //alert("string doesn't starts with number or ( and doesn't end with number or ) - REJECTED")
+            return false;
+        }
+        
+        //Check If the string contains only numbers, "AND/OR" operators and brackets
+        logic_copy=logic;
+        logic_copy = logic_copy.replace(/AND/g,"").replace(/OR/g,"").replace(/\(/g,"").replace(/\)/g,"");
+        
+        if(Number(logic_copy)>10){
+            //Check If the brackets are balanced
+            logic_copy = logic;
+            
+            var stack = [];
+            var numberInString = "";
+            for(var i=0;i<logic_copy.length;i++){
+                var poppedElement;
+                if(logic_copy.charAt(i) == "(")
+                    stack.push("(");
+                else{
+                    if(logic_copy.charAt(i) == ")"){
+                        if(stack.length>0){
+                            poppedElement = stack.pop();
+                        }
+                        else{
+                            //alert("Unbalanced brackets - REJECTED");
+                            return false;
+                        }
+                    }
+                }
+                if(Number(logic_copy.charAt(i)) > 0){
+                    
+                    numberInString+=String(logic_copy.charAt(i));
+                    if(Number(logic_copy.charAt(i+1)) > 0){
+                        //numberInString+=String(logic_copy.charAt(i));
+                    }
+                    else{
+                        //Return False if an invalid row number has been used - INVALID STRING
+                        if(Number(numberInString) > upperLimit){
+                            //alert("Number greater than the record limit entered - REJECTED")
+                            return false;
+                        }
+                        numberInString = "";
+                    }
+                }
+            }
+        }
+        else{
+            //Return False If the string contains anything other than numbers, "AND/OR" operators and brackets - INVALID STRING
+            //alert("string contains anything other than numbers, \"AND/OR\" operators and brackets - REJECTED")
+            return false;
+        }
+        //Return True if everything passes and the bracket are balanced - VALID STRING
+        if(stack.length==0){
+            return true;
+        }
+        //Return False if the brackets are not balanced - INVALID STRING
+        //alert("Unbalanced brackets - REJECTED");
+        return false;
+    }
+    /*-----------------RRD-252 End-------------------------*/
+    function countCriteria(){
+        /*-----------------RRD-252 Start-------------------------*/
+        /*if('{!count}'=='20'){
+                alert("You can add only upto 20 criteria. Please edit/delete a criteria for any new requirement.");
+            }*/
+        if('{!count}'=='5'){
+            alert("You can add only upto 5 criteria. Please edit/delete a criteria for any new requirement.");
+        }
+        else{
+            window.top.location.replace('/apex/CriteriaPage?parentId={!rrde__RRD_Teams__c.id}');
+        }
+        /*-----------------RRD-252 End-------------------------*/
+    }
+    
+    </script>
+    <div style="overflow:scroll;max-height:200px">
+        <apex:form id="criteriaForm">
+            
+            <apex:outputPanel id="theValues"/>
+            <apex:commandButton style="margin-left:330px;margin-bottom:4px;" value="New Criteria" title="New Criteria" action="{!countCriteria}" oncomplete="countCriteria();" />
+            
+            <!-- ********************TASK TABLE**************** -->
+            
+            
+            
+            <apex:pageBlock id="pg">
+                <apex:pageBlockTable var="clst" value="{!criteriaOrdered}" id="table">
+                    
+                    <apex:column headerValue="Action">
+                        <apex:outputLink style="color:#015ba7" value="/apex/CriteriaPage?id={!clst.criteriaRecord.id}" target="_parent">Edit
+                        </apex:outputLink>
+                        &nbsp;|&nbsp;
+                        <apex:commandLink style="color:#015ba7" onclick="if (window.confirm('Are you sure?')) deleteCriteria('{!clst.criteriaRecord.id}');"
+                                          oncomplete="RefreshPrimaryTab('{!rrde__RRD_Teams__c.id}'); return true;" value="Del" reRender="table">
+                        </apex:commandLink>
+                    </apex:column>
+                    <!-----------------RRD-252 Start------------------------->
+                    <apex:column value="{!clst.seq_no}" headerValue="S.No."/>
+                    <!-----------------RRD-252 End------------------------->
+                    <apex:column headerValue="Criteria Name">
+                        <apex:outputLink value="/apex/CriteriaPageView?id={!clst.criteriaRecord.id}" target="_parent">{!clst.criteriaRecord.Name}
+                        </apex:outputLink>
+                    </apex:column>
+                    <apex:column value="{!clst.criteriaRecord.rrde__SelectedObject__c}"/>
+                    <apex:column value="{!clst.criteriaRecord.rrde__Selected_Field__c}"/>
+                    <!-----------------RRD-252 Start------------------------->
+                    <apex:column value="{!clst.criteriaRecord.rrde__Operator__c}"/>
+                    <!-----------------RRD-252 End------------------------->
+                    <apex:column value="{!clst.criteriaRecord.rrde__Field_Value__c}"/>
+                    <apex:column value="{!clst.criteriaRecord.rrde__Field_Api_Name__c}"/>
+                </apex:pageBlockTable>
+                <!-----------------RRD-252 Start------------------------->
+                <apex:inputText id="customFilterLogic" value="{!customLogic}" maxlength="70" style="width: 300px">
+                    <apex:outputLabel style="font-weight:bold;margin-right:15px">Add Criteria Logic: </apex:outputLabel>
+                </apex:inputText>
+                <apex:commandButton id="editCustomLogic" value="Edit" onclick="toggleVisibility(); return false;"
+                                    style="width:50px;margin-left:5px"/>
+                <apex:commandButton id="submitCustomLogic" value="Submit" onclick="checkInput();" style="width:50px;margin-left:5px"
+                                    oncomplete="RefreshPrimaryTab('{!rrde__RRD_Teams__c.id}'); return true;" rerender="table"/>
+                <!-----------------RRD-252 End------------------------->
+                <apex:actionFunction action="{!deleteCriteria}" name="deleteCriteria" reRender="table">
+                    <apex:param name="acco" value="" assignTo="{!id}"/>
+                </apex:actionFunction>
+                
+                <!-----------------RRD-252 Start------------------------->
+                <apex:actionFunction action="{!saveCustomLogic}" name="saveCustomLogic" reRender="table">
+                </apex:actionFunction>
+                <!-----------------RRD-252 End------------------------->
+            </apex:pageBlock>
+            
+        </apex:form>
+    </div>
+</apex:page>

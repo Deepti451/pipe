@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>AI for your business</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>Mirketa</letterhead>
+    <name>Newsletter 1</name>
+    <style>newsletter</style>
+    <subject>Artificial Intelligence for your business!</subject>
+    <textOnly>{!Lead.FirstName},
+
+It is extremely notable that the amount of customer data is expanding with each passing moment. One can’t simply physically investigate information and know each pattern or test numerous theories.Here are two blogs that explain Artificial Intelligence and what it can do for your business.
+
+Blog Post: BE A DATA SCIENTIST WITH EINSTEIN ANALYTICS
+http://blog.mirketa.com/be-a-data-scientist-with-einstein-analytics/
+
+Blog Post: ARTIFICIAL INTELLIGENCE
+http://blog.mirketa.com/artificial-intelligence/
+
+Contact us: If your business is interested in what AI could do for you...
+http://www.mirketa.com/contact.jsp
+
+Or contact me directly...
+
+Regards,
+
+Matt Falkner
+
+Mirketa Inc | Think. Build. Transform
+
+Phone: 772-932-1623
+
+matt.falkner@mirketa.com</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
