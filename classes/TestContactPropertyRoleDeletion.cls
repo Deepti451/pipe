@@ -14,5 +14,6 @@ private class TestContactPropertyRoleDeletion {
        
         System.debug('!result.isSuccess: ' + !result.isSuccess());
         System.assertEquals('test', 'test');
+        System.debug('yes'+cpr);
     }
 }
